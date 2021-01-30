@@ -1,5 +1,6 @@
 export * from "./Container";
 export * from "./Footer";
+export * from "./Page";
 export * from "./Text";
 
 const size = {
@@ -19,6 +20,7 @@ const theme = {
     text: {
       body: "#2c2c2c",
     },
+    background: "#f1f2f6",
   },
 };
 
@@ -33,6 +35,7 @@ export interface ITheme {
     text: {
       body: string;
     };
+    background: string;
   };
 }
 

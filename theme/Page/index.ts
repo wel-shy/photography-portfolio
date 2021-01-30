@@ -1,21 +1,13 @@
 import styled from "styled-components";
 import { ITheme } from "..";
 
-export const Footer = styled.footer`
+export const Main = styled.main`
   background-color: ${({ theme }) => (theme as ITheme).color.background};
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
+  padding: 5rem 0;
+  flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  img {
-    margin-left: 0.5rem;
-    max-height: 1em;
-  }
-
-  a {
-    color: red;
-  }
+  min-height: 90vh;
 `;

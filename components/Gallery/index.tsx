@@ -5,7 +5,7 @@ import { Tag } from "../Tag";
 import { GridContainer, TagsContainer } from "./styles";
 
 interface GalleryProps {
-  items: { link: string; tags: string[]; title: string }[];
+  items: { link: string; tags: string[]; title: string; id: string }[];
 }
 
 export const Gallery = ({ items }: GalleryProps) => {
@@ -36,8 +36,8 @@ export const Gallery = ({ items }: GalleryProps) => {
       <h2>Gallery</h2>
       <TagsContainer>{tags.map(tagToElement)}</TagsContainer>
       <GridContainer>
-        {items.filter(filterCondition).map(({ link, title }, i) => (
-          <GalleryItem link={link} key={i} title={title} />
+        {items.filter(filterCondition).map(({ link, title, id }, i) => (
+          <GalleryItem link={link} key={i} title={title} id={id} />
         ))}
       </GridContainer>
     </Container>

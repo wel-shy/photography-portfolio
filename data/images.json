@@ -1,37 +1,74 @@
 [
   {
     "link": "/ncl-thumb.jpeg",
+    "full": "/ncl-full.jpeg",
     "tags": ["City", "Buildings"],
-    "title": "Newcastle upon Type Quayside"
+    "title": "Newcastle upon Type Quayside",
+    "id": "ncl-quay",
+    "ratio": "5x7",
+    "orientation": "landscape"
+  },
+  {
+    "link": "/nacka-full.png",
+    "full": "/nacka-full.png",
+    "tags": ["Lake", "Forest"],
+    "title": "Nacka: First Snowfall",
+    "id": "nacka-snow",
+    "ratio": "6x17",
+    "orientation": "landscape"
   },
   {
     "link": "/gamla-stan-thumb.jpeg",
+    "full": "/gamla-stan-full.jpeg",
     "tags": ["Autumn", "Buildings"],
-    "title": "Stockholm's Old Town"
+    "title": "Stockholm's Old Town",
+    "id": "gamla-stan",
+    "ratio": "5x7",
+    "orientation": "portrait"
   },
   {
     "link": "/ncl-thumb.jpeg",
+    "full": "/ncl-full.jpeg",
     "tags": ["City", "Buildings"],
-    "title": "Newcastle upon Type Quayside"
+    "title": "Newcastle upon Type Quayside",
+    "id": "ncl-quay",
+    "ratio": "5x7",
+    "orientation": "landscape"
   },
   {
     "link": "/ncl-thumb.jpeg",
+    "full": "/ncl-full.jpeg",
     "tags": ["City", "Buildings"],
-    "title": "Newcastle upon Type Quayside"
+    "title": "Newcastle upon Type Quayside",
+    "id": "ncl-quay",
+    "ratio": "5x7",
+    "orientation": "landscape"
   },
   {
     "link": "/ncl-thumb.jpeg",
+    "full": "/ncl-full.jpeg",
     "tags": ["City", "Buildings"],
-    "title": "Newcastle upon Type Quayside"
+    "title": "Newcastle upon Type Quayside",
+    "id": "ncl-quay",
+    "ratio": "5x7",
+    "orientation": "landscape"
   },
   {
     "link": "/ncl-thumb.jpeg",
+    "full": "/ncl-full.jpeg",
     "tags": ["City", "Buildings"],
-    "title": "Newcastle upon Type Quayside"
+    "title": "Newcastle upon Type Quayside",
+    "id": "ncl-quay",
+    "ratio": "5x7",
+    "orientation": "landscape"
   },
   {
     "link": "/ncl-thumb.jpeg",
+    "full": "/ncl-full.jpeg",
     "tags": ["City", "Buildings"],
-    "title": "Newcastle upon Type Quayside"
+    "title": "Newcastle upon Type Quayside",
+    "id": "ncl-quay",
+    "ratio": "5x7",
+    "orientation": "landscape"
   }
 ]

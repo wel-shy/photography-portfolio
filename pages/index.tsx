@@ -1,22 +1,18 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.css";
 import { Footer } from "../components/Footer/index";
 import { Header } from "../components/Header";
 import { Gallery } from "../components/Gallery/index";
 import images from "../data/images.json";
+import { PageHead } from "../components/PageHead";
+import { Main } from "../theme";
 
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>Daniel Welsh Photography</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
+      <PageHead />
+      <Main>
         <Header />
         <Gallery items={images} />
-      </main>
+      </Main>
       <Footer />
     </div>
   );
