@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Container } from "../../theme";
+import { Container, Header2 } from "../../theme";
 import { GalleryItem } from "../GalleryItem";
 import { Tag } from "../Tag";
 import { GridContainer, TagsContainer } from "./styles";
@@ -33,7 +33,7 @@ export const Gallery = ({ items }: GalleryProps) => {
 
   return (
     <Container>
-      <h2>Gallery</h2>
+      <Header2>Gallery</Header2>
       <TagsContainer>{tags.map(tagToElement)}</TagsContainer>
       <GridContainer>
         {items.filter(filterCondition).map(({ link, title, id }, i) => (

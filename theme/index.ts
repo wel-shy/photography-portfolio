@@ -19,6 +19,8 @@ const theme = {
   color: {
     text: {
       body: "#2c2c2c",
+      primary: "#3c7a89",
+      header: "#2E4756",
     },
     background: "#f1f2f6",
   },
@@ -34,6 +36,8 @@ export interface ITheme {
   color: {
     text: {
       body: string;
+      primary: string;
+      header: string;
     };
     background: string;
   };

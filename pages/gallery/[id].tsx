@@ -5,6 +5,7 @@ import { Container } from "../../theme";
 import { PageHead } from "../../components/PageHead/";
 import { FullImage } from "../../components/FullImage";
 import { Main } from "../../theme/";
+import { EXIF } from "../../models";
 
 interface GalleryImageProps {
   image: {
@@ -14,12 +15,12 @@ interface GalleryImageProps {
     full: string;
     orientation: string;
     ratio: string;
+    exif: EXIF;
+    description: string;
   };
 }
 
 const maxImageSize = 1000;
-const dummyDescription =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 function GalleryImage({ image }: GalleryImageProps) {
   return (
@@ -33,7 +34,8 @@ function GalleryImage({ image }: GalleryImageProps) {
             ratio={image.ratio}
             orientation={image.orientation}
             maxSize={maxImageSize}
-            description={dummyDescription}
+            description={image.description}
+            exif={image.exif}
           />
         </Container>
       </Main>

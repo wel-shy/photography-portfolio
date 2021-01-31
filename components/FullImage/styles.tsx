@@ -5,7 +5,7 @@ import Image from "next/image";
 export const ImageWrapper = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
 `;
 
@@ -22,7 +22,7 @@ const TImage = styled(Image)`
 `;
 
 const ImageBorder = styled.div`
-  border: 3rem solid white;
+  border: 3vw solid white;
 `;
 
 interface BorderImageProps {
@@ -41,9 +41,9 @@ interface DescriptionProps {
   maxWidth: number;
 }
 
-export const Description = styled(Paragraph)<DescriptionProps>`
+export const Description = styled.div<DescriptionProps>`
   flex: 2;
   min-width: 400px;
   max-width: ${({ maxWidth }) => maxWidth}px;
-  padding: 2.5%;
+  padding: 0 2.5%;
 `;
