@@ -2,6 +2,7 @@ import useImageSize from "../../hooks/useImageSize";
 import { ImageWrapper, Description, BorderedImage } from "./styles";
 import { EXIF } from "../../models/index";
 import useExifString from "../../hooks/useExifString";
+import { Paragraph } from "../../theme/";
 
 interface FullImageProps {
   orientation: string;
@@ -27,8 +28,8 @@ export const FullImage = ({
     <ImageWrapper>
       <BorderedImage src={src} height={height} width={width} />
       <Description maxWidth={width}>
-        <p>{description}</p>
-        <p>{metadata}</p>
+        <Paragraph>{metadata}</Paragraph>
+        <Paragraph>{description}</Paragraph>
       </Description>
     </ImageWrapper>
   );

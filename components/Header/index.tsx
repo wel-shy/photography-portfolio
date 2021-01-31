@@ -1,11 +1,17 @@
-import { Container, Paragraph, Title, Subtitle } from "../../theme/";
+import {
+  Container,
+  Paragraph,
+  Title,
+  Subtitle,
+  HorizontalRule,
+} from "../../theme/";
 import { Contact } from "../Contact";
 import { CircleImage, ContentWrapper } from "./styles";
 
 export const Header = () => (
   <Container>
     <ContentWrapper>
-      <CircleImage src="/profile.jpeg" height="350" width="350" />
+      <CircleImage src="/profile.jpeg" height="250" width="250" />
       <div>
         <Title>Daniel Welsh</Title>
         <Subtitle>Photography</Subtitle>
@@ -18,6 +24,6 @@ export const Header = () => (
         <Contact />
       </div>
     </ContentWrapper>
-    <hr />
+    <HorizontalRule />
   </Container>
 );

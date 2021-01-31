@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ITheme } from "..";
+import Link from "next/link";
 
 const Nav = styled.nav`
   border-bottom: 1px solid
@@ -11,9 +12,10 @@ const Nav = styled.nav`
   width: 100%;
 `;
 
-export const NavBarBrand = styled.a`
+const NavBarBrandAnchor = styled.a`
   border-radius: 15px;
   color: ${({ theme }) => (theme as ITheme).color.text.primary};
+  cursor: pointer;
   display: block;
   font-weight: bold;
   height: 100%;
@@ -24,6 +26,18 @@ export const NavBarBrand = styled.a`
     color: ${({ theme }) => (theme as ITheme).color.text.header};
   }
 `;
+
+export const NavBarBrand = ({
+  children,
+  href,
+}: {
+  children: any;
+  href: string;
+}) => (
+  <Link href={href}>
+    <NavBarBrandAnchor>{children}</NavBarBrandAnchor>
+  </Link>
+);
 
 const BrandWrapper = styled.div`
   height: 100%;

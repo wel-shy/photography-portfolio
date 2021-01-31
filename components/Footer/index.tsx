@@ -1,5 +1,6 @@
 import { Container, Footer as ThemedFooter, TextLink } from "../../theme/";
 import { Paragraph } from "../../theme/Text/index";
+import { Contact } from "../Contact";
 
 export const Footer = () => (
   <ThemedFooter>
@@ -17,6 +18,8 @@ export const Footer = () => (
         All content and photographs © {new Date().getFullYear()} | Daniel Welsh
         Photography.
       </Paragraph>
+
+      <Contact />
 
       <Paragraph>
         Icons from{" "}

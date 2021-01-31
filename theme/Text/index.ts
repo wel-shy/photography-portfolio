@@ -7,7 +7,7 @@ export const Paragraph = styled.p`
 
 export const Title = styled.h1`
   color: ${({ theme }: { theme: ITheme }) => theme.color.text.header};
-  margin-bottom: 0;
+  margin: 0;
 `;
 
 export const Subtitle = styled.h2`

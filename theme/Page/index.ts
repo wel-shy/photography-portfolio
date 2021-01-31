@@ -3,5 +3,5 @@ import { ITheme } from "..";
 
 export const Main = styled.main`
   background-color: ${({ theme }) => (theme as ITheme).color.background};
-  min-height: 90vh;
+  min-height: 85vh;
 `;

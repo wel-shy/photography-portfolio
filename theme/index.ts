@@ -1,5 +1,6 @@
 export * from "./Container";
 export * from "./Footer";
+export * from "./HorizontalRule";
 export * from "./Navigation";
 export * from "./Page";
 export * from "./Text";
