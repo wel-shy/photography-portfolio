@@ -1,5 +1,6 @@
 export * from "./Container";
 export * from "./Footer";
+export * from "./Navigation";
 export * from "./Page";
 export * from "./Text";
 
@@ -23,6 +24,7 @@ const theme = {
       header: "#2E4756",
     },
     background: "#f1f2f6",
+    backgroundAlt: "#d3d0cb",
   },
 };
 
@@ -40,6 +42,7 @@ export interface ITheme {
       header: string;
     };
     background: string;
+    backgroundAlt: string;
   };
 }
 

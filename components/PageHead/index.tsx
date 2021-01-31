@@ -1,8 +1,12 @@
 import Head from "next/head";
 
-export const PageHead = () => (
+interface PageHeadProps {
+  title: string;
+}
+
+export const PageHead = ({ title }: PageHeadProps) => (
   <Head>
-    <title>Daniel Welsh Photography</title>
+    <title>{title}</title>
     <link rel="icon" href="/favicon.ico" />
   </Head>
 );

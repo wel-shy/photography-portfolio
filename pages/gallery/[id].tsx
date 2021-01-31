@@ -1,11 +1,9 @@
-import { Footer } from "../../components/Footer";
 import images from "../../data/images.json";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { Container } from "../../theme";
-import { PageHead } from "../../components/PageHead/";
 import { FullImage } from "../../components/FullImage";
-import { Main } from "../../theme/";
 import { EXIF } from "../../models";
+import { PageWrapper } from "../../components/PageWrapper";
 
 interface GalleryImageProps {
   image: {
@@ -24,23 +22,19 @@ const maxImageSize = 1000;
 
 function GalleryImage({ image }: GalleryImageProps) {
   return (
-    <div>
-      <PageHead />
-      <Main>
-        <Container>
-          <h1>{image.title}</h1>
-          <FullImage
-            src={image.full}
-            ratio={image.ratio}
-            orientation={image.orientation}
-            maxSize={maxImageSize}
-            description={image.description}
-            exif={image.exif}
-          />
-        </Container>
-      </Main>
-      <Footer />
-    </div>
+    <PageWrapper pageTitle={`Daniel Welsh | Photography - ${image.title}`}>
+      <Container>
+        <h1>{image.title}</h1>
+        <FullImage
+          src={image.full}
+          ratio={image.ratio}
+          orientation={image.orientation}
+          maxSize={maxImageSize}
+          description={image.description}
+          exif={image.exif}
+        />
+      </Container>
+    </PageWrapper>
   );
 }
 

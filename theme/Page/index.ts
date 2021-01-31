@@ -3,7 +3,6 @@ import { ITheme } from "..";
 
 export const Main = styled.main`
   background-color: ${({ theme }) => (theme as ITheme).color.background};
-  padding: 5rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;

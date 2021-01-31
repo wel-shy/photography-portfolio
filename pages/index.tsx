@@ -1,19 +1,15 @@
-import { Footer } from "../components/Footer/index";
 import { Header } from "../components/Header";
 import { Gallery } from "../components/Gallery/index";
 import images from "../data/images.json";
-import { PageHead } from "../components/PageHead";
-import { Main } from "../theme";
+import { PageWrapper } from "../components/PageWrapper";
 
 export default function Home() {
   return (
-    <div>
-      <PageHead />
-      <Main>
+    <PageWrapper pageTitle="Daniel Welsh | Photography">
+      <>
         <Header />
         <Gallery items={images} />
-      </Main>
-      <Footer />
-    </div>
+      </>
+    </PageWrapper>
   );
 }
