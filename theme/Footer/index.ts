@@ -2,11 +2,12 @@ import styled from "styled-components";
 import { ITheme } from "..";
 
 export const Footer = styled.footer`
+  align-items: center;
   background-color: ${({ theme }) => (theme as ITheme).color.background};
-  width: 100%;
   border-top: 1px solid #eaeaea;
   justify-content: center;
-  align-items: center;
+  min-height: 10vh;
+  width: 100%;
 
   img {
     margin-left: 0.5rem;
