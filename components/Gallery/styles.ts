@@ -23,5 +23,14 @@ export const GridContainer = styled.div`
 `;
 
 export const TagsContainer = styled.div`
+  align-items: center;
+  display: flex;
   margin: 20px 0;
+  width: 100%;
+`;
+
+export const RightAlignWrapper = styled.div`
+  text-align: right;
+  width: 100%;
+  flex: 1;
 `;
