@@ -3,19 +3,17 @@ import { Image } from "../contexts/CollectionsContext";
 
 interface GalleryProps {
   images: Image[];
-  title: string;
 }
 
 const Grid = styled.div`
   display: grid;
   width: 100%;
-  grid-gap: 1em;
+  grid-gap: 2em;
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
 const GridItem = styled.img<{ isPano: boolean }>`
   aspect-ratio: ${({ isPano }) => (isPano ? "2/1" : "1/1")};
-  border-radius: 5px;
   grid-column: span ${({ isPano }) => (isPano ? 2 : 1)};
   height: 100%;
   object-fit: cover;
@@ -29,9 +27,8 @@ const GridItem = styled.img<{ isPano: boolean }>`
   }
 `;
 
-const Gallery = ({ images, title }: GalleryProps) => (
+const Gallery = ({ images }: GalleryProps) => (
   <section>
-    <h2>{title}</h2>
     <Grid>
       {images.map(({ url }, idx) => (
         <a href={`/images/id}`}>

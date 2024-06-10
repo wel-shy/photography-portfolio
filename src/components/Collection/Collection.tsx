@@ -1,17 +1,14 @@
+import CollectionLinks from "../CollectionLinks";
 import Gallery from "../Gallery";
 import useCollection from "./useCollection";
 
 const Collection = () => {
-  const collection = useCollection();
-  if (!collection) {
-    return null;
-  }
-
-  const { title, images } = collection;
+  const { images, id } = useCollection();
 
   return (
     <div>
-      <Gallery title={title} images={images} />
+      <CollectionLinks selectedCollection={id} />
+      <Gallery images={images} />
     </div>
   );
 };

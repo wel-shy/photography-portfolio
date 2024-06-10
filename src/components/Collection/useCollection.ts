@@ -9,7 +9,7 @@ const useCollection = () => {
     ({ id: collectionId }) => collectionId === id
   );
 
-  return collection;
+  return collection ?? collections[0];
 };
 
 export default useCollection;
