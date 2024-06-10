@@ -1,16 +1,7 @@
 import styled from "styled-components";
 import { useCollectionsContext } from "../contexts/CollectionsContext";
 import { useNavigate } from "react-router-dom";
-import Brand from "./Brand";
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-
-  .select-wrapper {
-    flex: 1;
-  }
-`;
+import NavBar from "./NavBar";
 
 const Selector = styled.select`
   background-color: transparent;
@@ -36,24 +27,20 @@ const CollectionLinks = ({ selectedCollection }: Props) => {
   const { collections } = useCollectionLinksController();
   const navigate = useNavigate();
 
-  return (
-    <Wrapper>
-      <div className="select-wrapper">
-        <Selector
-          value={selectedCollection}
-          onChange={(e) => {
-            navigate(`/collections/${e.target.value}`);
-          }}
-        >
-          {collections.map(({ id, title }) => (
-            <option value={id}>{title}</option>
-          ))}
-        </Selector>
-      </div>
-
-      <Brand />
-    </Wrapper>
+  const CollectionsSelector = (
+    <Selector
+      value={selectedCollection}
+      onChange={(e) => {
+        navigate(`/collections/${e.target.value}`);
+      }}
+    >
+      {collections.map(({ id, title }) => (
+        <option value={id}>{title}</option>
+      ))}
+    </Selector>
   );
+
+  return <NavBar LeftDetail={CollectionsSelector} />;
 };
 
 export default CollectionLinks;

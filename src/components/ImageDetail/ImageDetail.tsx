@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import useImageExif from "./useImageExif";
+import NavBar from "../NavBar";
 
 const url =
   "https://welshy-cdn.fra1.cdn.digitaloceanspaces.com/20240322-Andover%20-%20London.jpg";
 
 const Image = styled.img`
-  width: calc(100% - 4em);
-  border: 2em solid white;
+  width: 100%;
 `;
 
 const ExifWrapper = styled.div`
@@ -23,6 +23,7 @@ const ImageDetail = () => {
 
   return (
     <div>
+      <NavBar LeftDetail={null} />
       <Image src={url} alt="" />
       {exif && (
         <ExifWrapper>
