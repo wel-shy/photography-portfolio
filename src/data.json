@@ -1,0 +1,22 @@
+{
+    "collections": [
+        {
+            "title": "In the City",
+            "id": "in-the-city",
+            "images": [
+                {"url": "https://images.unsplash.com/photo-1598081329346-fffbd153ecab?q=80&w=2163&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "description": "", "title": ""},
+                {"url": "https://images.unsplash.com/photo-1597481794132-03cb142cb669?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "description": "", "title": ""},
+                {"url": "https://images.unsplash.com/photo-1558289675-f8a783516e7b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "description": "", "title": ""},
+                {"url": "https://images.unsplash.com/photo-1558289675-f0293af1a590?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "description": "", "title": ""},
+                {"url": "https://images.unsplash.com/photo-1539672617445-91a4c0bada0f?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "description": "", "title": ""}
+            ]
+        },
+        {
+            "title": "Landscapes",
+            "id": "landscapes",
+            "images": [
+                {"url": "https://images.unsplash.com/photo-1549223771-772dc9353a07?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "description": "", "title": ""}
+            ]
+        }
+    ]
+}
