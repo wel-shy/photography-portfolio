@@ -59,10 +59,7 @@ const fetchCollections = async (onSuccess: (result: Collection[]) => void) => {
         el.elements.find(({ name }) => name === "Key")?.elements[0]?.text
     );
 
-  const collections = parseContents(filtered);
-  console.log(collections);
-
-  onSuccess(collections);
+  onSuccess(parseContents(filtered));
 };
 
 export default fetchCollections;

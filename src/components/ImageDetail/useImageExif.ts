@@ -28,7 +28,7 @@ const getExposureTime = (exposureTime: number | null) => {
   const base = 1000;
   const num = exposureTime * 1000;
 
-  return `1/${base / num}s`;
+  return `1/${Math.ceil(base / num)}s`;
 };
 
 const getExif = async (
