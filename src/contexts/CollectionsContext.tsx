@@ -1,5 +1,12 @@
-import { ReactNode, createContext, useContext, useMemo } from "react";
-import data from "../data.json";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
+import fetchCollections from "../fetchCollections";
 
 export interface Image {
   url: string;
@@ -8,7 +15,7 @@ export interface Image {
   id: string;
 }
 
-interface Collection {
+export interface Collection {
   id: string;
   title: string;
   images: Image[];
@@ -23,8 +30,12 @@ const CollectionsContext = createContext<CollectionsContextState>(
 );
 
 export const CollectionsProvider = ({ children }: { children: ReactNode }) => {
-  const { collections } = data;
+  const [collections, setCollections] = useState<Collection[]>([]);
   const state = useMemo(() => ({ collections }), [collections]);
+
+  useEffect(() => {
+    fetchCollections(setCollections);
+  }, []);
 
   return (
     <CollectionsContext.Provider value={state}>

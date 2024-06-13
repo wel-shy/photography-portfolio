@@ -3,12 +3,16 @@ import Gallery from "../Gallery";
 import useCollection from "./useCollection";
 
 const Collection = () => {
-  const { images, id } = useCollection();
+  const collection = useCollection();
+
+  if (!collection) {
+    return null;
+  }
 
   return (
     <div>
-      <CollectionLinks selectedCollection={id} />
-      <Gallery images={images} />
+      <CollectionLinks selectedCollection={collection.id} />
+      <Gallery images={collection.images} />
     </div>
   );
 };
