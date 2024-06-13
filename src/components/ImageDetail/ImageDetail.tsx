@@ -1,40 +1,65 @@
 import styled from "styled-components";
-import useImageExif from "./useImageExif";
 import NavBar from "../NavBar";
+import { useParams } from "react-router-dom";
+import useImage from "./useImage";
+import ExifDetails from "./ExifDetails";
 
-const url =
-  "https://welshy-cdn.fra1.cdn.digitaloceanspaces.com/20240322-Andover%20-%20London.jpg";
+const ImageDetailsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
 
-const Image = styled.img`
   width: 100%;
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  }
 `;
 
-const ExifWrapper = styled.div`
-  margin-top: 1em;
-  text-align: right;
+const StyledImage = styled.img`
+  max-width: 100%;
+  max-height: 75vh;
+`;
 
-  .fstop-label {
-    font-style: italic;
+const ImageContainer = styled.div`
+  max-height: 75vh;
+  flex: 3;
+`;
+
+const DetailsContainer = styled.div`
+  flex: 1;
+  padding-left: 1em;
+  display: flex;
+  flex-direction: column;
+
+  .text-wrapper {
+    height: 100%;
+  }
+
+  h2 {
+    font-weight: 400;
   }
 `;
 
 const ImageDetail = () => {
-  const { exif } = useImageExif(url);
+  const { imageId } = useParams();
+  const { url, title, description } = useImage(imageId) ?? { url: undefined };
 
   return (
     <div>
-      <NavBar LeftDetail={null} />
-      <Image src={url} alt="" />
-      {exif && (
-        <ExifWrapper>
-          <div>{exif.Model}</div>
-          <div>
-            {exif.ExposureTime} / <span className="fstop-label">f</span>
-            {exif.FNumber} / ISO {exif.ISO}
+      <NavBar LeftDetail={<a href="/">Back</a>} />
+      <ImageDetailsWrapper>
+        <ImageContainer>
+          <StyledImage src={url} alt="" />
+        </ImageContainer>
+
+        <DetailsContainer>
+          <ExifDetails imageUrl={url} />
+          <div className="text-wrapper">
+            <h2>{title}</h2>
+            <p>{description}</p>
           </div>
-          <div>{exif.FocalLength}mm</div>
-        </ExifWrapper>
-      )}
+        </DetailsContainer>
+      </ImageDetailsWrapper>
     </div>
   );
 };

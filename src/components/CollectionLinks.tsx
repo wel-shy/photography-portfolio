@@ -35,7 +35,9 @@ const CollectionLinks = ({ selectedCollection }: Props) => {
       }}
     >
       {collections.map(({ id, title }) => (
-        <option value={id}>{title}</option>
+        <option value={id} key={id}>
+          {title}
+        </option>
       ))}
     </Selector>
   );

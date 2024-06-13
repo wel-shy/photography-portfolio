@@ -25,10 +25,10 @@ const getExposureTime = (exposureTime: number | null) => {
     return `${exposureTime}s`;
   }
 
-  const dom = 1000;
+  const base = 1000;
   const num = exposureTime * 1000;
 
-  return `1/${dom / num}s`;
+  return `1/${base / num}s`;
 };
 
 const getExif = async (
@@ -36,15 +36,22 @@ const getExif = async (
   setExif: (exif: SetStateAction<ExifData | null>) => void
 ) => {
   const exif = (await parse(url)) as ExifResult;
-  const exposureTime = getExposureTime(exif.ExposureTime);
+  if (!exif) {
+    return;
+  }
 
+  const exposureTime = getExposureTime(exif?.ExposureTime);
   setExif({ ...exif, ExposureTime: exposureTime });
 };
 
-const useImageDetails = (url: string) => {
+const useImageDetails = (url: string | undefined) => {
   const [exif, setExif] = useState<ExifData | null>(null);
 
   useEffect(() => {
+    if (!url) {
+      return;
+    }
+
     getExif(url, setExif);
   }, [url]);
 

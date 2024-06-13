@@ -30,8 +30,8 @@ const GridItem = styled.img<{ isPano: boolean }>`
 const Gallery = ({ images }: GalleryProps) => (
   <section>
     <Grid>
-      {images.map(({ url }, idx) => (
-        <a href={`/images/id}`}>
+      {images.map(({ url, id }, idx) => (
+        <a href={`/images/${id}`} key={id}>
           <GridItem
             key={url}
             isPano={!!(idx % 2)}
