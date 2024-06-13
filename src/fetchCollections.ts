@@ -13,7 +13,7 @@ const parseContents = (keys: string[]): Collection[] => {
 
     const [, title, imageId] = key.split("/");
     const image: Image = {
-      id: imageId,
+      id: imageId.split(".")[0],
       url: `${process.env.REACT_APP_CDN_BASE_URL}/${key}`,
     };
 
