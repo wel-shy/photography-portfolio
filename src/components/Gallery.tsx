@@ -10,9 +10,17 @@ const Grid = styled.div`
   width: 100%;
   grid-gap: 2em;
   grid-template-columns: 1fr 1fr 1fr;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
-const GridItem = styled.img<{ isPano: boolean }>`
+const GridItem = styled.img<{ isPano?: boolean }>`
   aspect-ratio: ${({ isPano }) => (isPano ? "2/1" : "1/1")};
   grid-column: span ${({ isPano }) => (isPano ? 2 : 1)};
   height: 100%;
@@ -30,15 +38,9 @@ const GridItem = styled.img<{ isPano: boolean }>`
 const Gallery = ({ images }: GalleryProps) => (
   <section>
     <Grid>
-      {images.map(({ url, id }, idx) => (
+      {images.map(({ url, id }) => (
         <a href={`/images/${id}`} key={id}>
-          <GridItem
-            key={url}
-            isPano={!!(idx % 2)}
-            className="grid-item"
-            alt=""
-            src={url}
-          />
+          <GridItem key={url} className="grid-item" alt="" src={url} />
         </a>
       ))}
     </Grid>

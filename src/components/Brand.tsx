@@ -3,6 +3,11 @@ import styled from "styled-components";
 
 const H1 = styled.h1`
   font-size: 4em;
+  font-style: italic;
+
+  @media (max-width: 750px) {
+    font-size: 1.75em;
+  }
 
   &:hover {
     cursor: pointer;
