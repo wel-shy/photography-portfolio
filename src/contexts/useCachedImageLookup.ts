@@ -66,8 +66,6 @@ const useCachedImageLookup = (collections: Collection[] | null) => {
     cacheImageLookup(collections);
   }, [collections, imageExifLookup]);
 
-  console.log(imageExifLookup);
-
   return imageExifLookup;
 };
 
