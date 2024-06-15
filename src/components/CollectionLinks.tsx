@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { useCollectionsContext } from "../contexts/CollectionsContext";
-import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 
-const Selector = styled.select`
-  background-color: transparent;
-  border: none;
-  font-size: 1em;
-  font-weight: bold;
-  text-align: left;
+const FlexWrapper = styled.div`
+  display: flex;
+  gap: 1em;
+`;
+
+const CollectionLink = styled.a<{ active: boolean }>`
+  text-decoration: ${({ active }) => (active ? "underline" : "none")};
 `;
 
 const useCollectionLinksController = () => {
@@ -25,24 +25,21 @@ interface Props {
 
 const CollectionLinks = ({ selectedCollection }: Props) => {
   const { collections } = useCollectionLinksController();
-  const navigate = useNavigate();
 
-  const CollectionsSelector = (
-    <Selector
-      value={selectedCollection}
-      onChange={(e) => {
-        navigate(`/collections/${e.target.value}`);
-      }}
-    >
-      {collections.map(({ id, title }) => (
-        <option value={id} key={id}>
-          {title}
-        </option>
+  const CollectionItems = (
+    <FlexWrapper>
+      {collections.map((collection) => (
+        <CollectionLink
+          href={`/collections/${collection.id}`}
+          active={selectedCollection === collection.id}
+        >
+          {collection.title}
+        </CollectionLink>
       ))}
-    </Selector>
+    </FlexWrapper>
   );
 
-  return <NavBar LeftDetail={CollectionsSelector} />;
+  return <NavBar LeftDetail={CollectionItems} />;
 };
 
 export default CollectionLinks;

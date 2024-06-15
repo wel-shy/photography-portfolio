@@ -10,6 +10,12 @@ const Wrapper = styled.div`
   .left-detail {
     flex: 1;
   }
+
+  @media (max-width: 750px) {
+    flex-direction: column-reverse;
+    padding-bottom: 2em;
+    align-items: end;
+  }
 `;
 
 interface Props {
