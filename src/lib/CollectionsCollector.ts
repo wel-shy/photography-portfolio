@@ -1,16 +1,10 @@
-import { Collection, Image } from "./types";
+import ImagesCollector from "./ImagesCollector";
+import { Collection } from "./types";
 
 class CollectionCollector {
+  private _collections: Collection[] | null = null;
+
   constructor(private readonly keys: string[]) {}
-
-  private getImageFromString(key: string) {
-    const [, , imageId] = key.split("/");
-
-    return {
-      id: imageId.split(".")[0],
-      url: `${process.env.REACT_APP_CDN_BASE_URL}/${key}`,
-    };
-  }
 
   private updateCollection(collections: Collection[], collection: Collection) {
     return collections
@@ -20,20 +14,13 @@ class CollectionCollector {
       .concat(collection);
   }
 
-  private reduceToImages() {
-    return this.keys.reduce<Image[]>((acc, key) => {
-      if (!key.includes("portfolio")) {
-        return acc;
-      }
-
-      return [...acc, this.getImageFromString(key)];
-    }, []);
-  }
-
-  private reduceImagesToCollections() {
+  private async reduceImagesToCollections() {
     const collectionLookup: Record<string, number> = {};
+    const imagesCollector = new ImagesCollector(this.keys);
 
-    return this.reduceToImages().reduce<Collection[]>((acc, image) => {
+    await imagesCollector.populate();
+
+    return imagesCollector.images.reduce<Collection[]>((acc, image) => {
       const title = image.url.split("/")[4];
       const collectionIdx = collectionLookup[title];
 
@@ -54,8 +41,16 @@ class CollectionCollector {
     }, []);
   }
 
+  async populate(): Promise<void> {
+    this._collections = await this.reduceImagesToCollections();
+  }
+
   get collections(): Collection[] {
-    return this.reduceImagesToCollections();
+    if (this._collections === null) {
+      throw new Error("Collections must be populated");
+    }
+
+    return this._collections;
   }
 }
 

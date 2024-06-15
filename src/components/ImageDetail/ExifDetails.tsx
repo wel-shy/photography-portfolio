@@ -9,6 +9,13 @@ const ExifWrapper = styled.div`
   .fstop-label {
     font-style: italic;
   }
+
+  .image-title {
+    font-size: 1.25em;
+    font-style: italic;
+    font-weight: 700;
+    margin-bottom: 0.25em;
+  }
 `;
 
 interface Params {
@@ -24,12 +31,13 @@ const ExifDetails = ({ imageUrl }: Params) => {
 
   return (
     <ExifWrapper>
-      <div>{exif.Model}</div>
+      <div className="image-title">{exif.title}</div>
+      <div>{exif.model}</div>
       <div>
-        {exif.ExposureTime} / <span className="fstop-label">f</span>
-        {exif.FNumber} / ISO {exif.ISO}
+        {exif.exposureTime} / <span className="fstop-label">f</span>
+        {exif.fStop} / ISO {exif.ISO}
       </div>
-      <div>{exif.FocalLength}mm</div>
+      <div>{exif.focalLength}mm</div>
     </ExifWrapper>
   );
 };

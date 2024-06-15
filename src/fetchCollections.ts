@@ -3,6 +3,8 @@ import { xml2js } from "xml-js";
 import CollectionCollector from "./lib/CollectionsCollector";
 import { Collection } from "./lib/types";
 
+const CDNIndexURL = "https://welshy-cdn.fra1.digitaloceanspaces.com";
+
 interface XMLElement {
   name: string;
   elements: XMLElement[];
@@ -28,15 +30,14 @@ const parseXMLToUrls = (xml: string) => {
  * @param onSuccess
  */
 const fetchCollections = async (onSuccess: (result: Collection[]) => void) => {
-  const { data, status } = await axios.get<string>(
-    "https://welshy-cdn.fra1.digitaloceanspaces.com"
-  );
+  const { data, status } = await axios.get<string>(CDNIndexURL);
 
   if (!(status === 200)) {
     throw new Error("Could not fetch images");
   }
 
   const collectionsCollector = new CollectionCollector(parseXMLToUrls(data));
+  await collectionsCollector.populate();
 
   onSuccess(collectionsCollector.collections);
 };

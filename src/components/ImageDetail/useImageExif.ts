@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import getImageExif, { ExifData } from "../../getImageExif";
+import getImageExif from "../../lib/getImageExif";
+import { Exif } from "../../lib/types";
 
 const useImageDetails = (url: string | undefined) => {
-  const [exif, setExif] = useState<ExifData | null>(null);
+  const [exif, setExif] = useState<Exif | null>(null);
 
   const setImageExif = async (url: string | undefined) => {
     if (!url) {
