@@ -36,3 +36,5 @@ export interface Exif {
   model: string | null;
   focalLength: number | null;
 }
+
+export type ImageExifLookup = Record<string, Exif | null>;

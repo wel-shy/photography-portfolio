@@ -1,11 +1,16 @@
 import ImageFactory from "./ImageFactory";
-import { Image } from "./types";
+import { Image, ImageExifLookup } from "./types";
 
 class ImagesCollector {
   private _images: Image[] | null = null;
-  private readonly imageFactory: ImageFactory = new ImageFactory();
+  private readonly imageFactory: ImageFactory = new ImageFactory(
+    this.imageExifLookup
+  );
 
-  constructor(private readonly keys: string[]) {}
+  constructor(
+    private readonly keys: string[],
+    private readonly imageExifLookup: ImageExifLookup | null
+  ) {}
 
   async populate() {
     const filteredKeys = this.keys.filter(

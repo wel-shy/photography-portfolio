@@ -8,6 +8,7 @@ import {
 } from "react";
 import fetchCollections from "../fetchCollections";
 import { Collection } from "../lib/types";
+import useCachedImageLookup from "./useCachedImageLookup";
 
 interface CollectionsContextState {
   collections: Collection[];
@@ -20,9 +21,11 @@ const CollectionsContext = createContext<CollectionsContextState>(
 export const CollectionsProvider = ({ children }: { children: ReactNode }) => {
   const [collections, setCollections] = useState<Collection[]>([]);
   const state = useMemo(() => ({ collections }), [collections]);
+  const imageExifLookup = useCachedImageLookup(collections);
 
   useEffect(() => {
-    fetchCollections(setCollections);
+    fetchCollections(imageExifLookup.current, setCollections);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -32,4 +35,12 @@ export const CollectionsProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useCollectionsContext = () => useContext(CollectionsContext);
+export const useCollectionsContext = () => {
+  const context = useContext(CollectionsContext);
+
+  if (!context) {
+    throw new Error("Context must be used within a CollectionsProvider");
+  }
+
+  return context;
+};

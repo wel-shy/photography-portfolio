@@ -1,10 +1,13 @@
 import ImagesCollector from "./ImagesCollector";
-import { Collection } from "./types";
+import { Collection, ImageExifLookup } from "./types";
 
 class CollectionCollector {
   private _collections: Collection[] | null = null;
 
-  constructor(private readonly keys: string[]) {}
+  constructor(
+    private readonly keys: string[],
+    private readonly imageExifLookup: ImageExifLookup | null
+  ) {}
 
   private updateCollection(collections: Collection[], collection: Collection) {
     return collections
@@ -16,7 +19,10 @@ class CollectionCollector {
 
   private async reduceImagesToCollections() {
     const collectionLookup: Record<string, number> = {};
-    const imagesCollector = new ImagesCollector(this.keys);
+    const imagesCollector = new ImagesCollector(
+      this.keys,
+      this.imageExifLookup
+    );
 
     await imagesCollector.populate();
 

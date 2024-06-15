@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import useImageExif from "./useImageExif";
+import { Exif } from "../../lib/types";
 
 const ExifWrapper = styled.div`
   margin-top: 1em;
@@ -19,12 +20,10 @@ const ExifWrapper = styled.div`
 `;
 
 interface Params {
-  imageUrl: string | undefined;
+  exif: Exif | null;
 }
 
-const ExifDetails = ({ imageUrl }: Params) => {
-  const { exif } = useImageExif(imageUrl);
-
+const ExifDetails = ({ exif }: Params) => {
   if (!exif) {
     return null;
   }
