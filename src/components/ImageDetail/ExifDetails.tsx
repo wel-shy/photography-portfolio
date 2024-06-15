@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import useImageExif from "./useImageExif";
 import { Exif } from "../../lib/types";
 
 const ExifWrapper = styled.div`
