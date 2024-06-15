@@ -13,6 +13,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     max-width: 1400px;
+    
+    font-family: "Bitter", serif;
+    font-optical-sizing: auto;
 }
 
 .title {

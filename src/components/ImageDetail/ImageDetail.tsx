@@ -42,7 +42,7 @@ const DetailsContainer = styled.div`
 
 const ImageDetail = () => {
   const { imageId } = useParams();
-  const { url, title, description, exif } = useImage(imageId) ?? {
+  const { url, exif } = useImage(imageId) ?? {
     url: undefined,
   };
 
@@ -56,10 +56,6 @@ const ImageDetail = () => {
 
         <DetailsContainer>
           <ExifDetails exif={exif ?? null} />
-          <div className="text-wrapper">
-            <h2>{title}</h2>
-            <p>{description}</p>
-          </div>
         </DetailsContainer>
       </ImageDetailsWrapper>
     </div>
