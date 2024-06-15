@@ -30,7 +30,7 @@ const parseXMLToUrls = (xml: string) => {
  * @param onSuccess
  */
 const fetchCollections = async (
-  imageExifLookup: ImageExifLookup | null,
+  imageExifLookup: ImageExifLookup,
   onSuccess: (result: Collection[]) => void
 ) => {
   const { data, status } = await axios.get<string>(CDNIndexURL);

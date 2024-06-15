@@ -24,9 +24,13 @@ export const CollectionsProvider = ({ children }: { children: ReactNode }) => {
   const imageExifLookup = useCachedImageLookup(collections);
 
   useEffect(() => {
-    fetchCollections(imageExifLookup.current, setCollections);
+    if (!imageExifLookup || collections.length) {
+      return;
+    }
+
+    fetchCollections(imageExifLookup, setCollections);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [imageExifLookup]);
 
   return (
     <CollectionsContext.Provider value={state}>

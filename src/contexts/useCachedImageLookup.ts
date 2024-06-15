@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Collection, ImageExifLookup } from "../lib/types";
 
 const IMAGE_EXIF_CACHE_KEY = "image-exif";
@@ -44,17 +44,29 @@ const cacheImageLookup = (collections: Collection[]) => {
 };
 
 const useCachedImageLookup = (collections: Collection[] | null) => {
-  const imageExifLookup = useRef<ImageExifLookup | null>(
-    getCachedImageLookup()
-  );
+  const [imageExifLookup, setImageExifLookup] =
+    useState<ImageExifLookup | null>(null);
 
   useEffect(() => {
-    if (!collections || imageExifLookup.current) {
+    if (imageExifLookup) {
+      return;
+    }
+
+    const lookup = getCachedImageLookup();
+    setImageExifLookup(lookup ?? {});
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!collections || !imageExifLookup) {
       return;
     }
 
     cacheImageLookup(collections);
-  }, [collections]);
+  }, [collections, imageExifLookup]);
+
+  console.log(imageExifLookup);
 
   return imageExifLookup;
 };

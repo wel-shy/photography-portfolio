@@ -2,7 +2,7 @@ import getImageExif from "./getImageExif";
 import { Image, ImageExifLookup } from "./types";
 
 class ImageFactory {
-  constructor(private readonly imageExifLookup: ImageExifLookup | null) {}
+  constructor(private readonly imageExifLookup: ImageExifLookup) {}
 
   private async getImageExifData(url: string) {
     return getImageExif(url);
@@ -16,7 +16,7 @@ class ImageFactory {
       url: `${process.env.REACT_APP_CDN_BASE_URL}/${key}`,
     };
 
-    const cachedExif = (this.imageExifLookup ?? {})[image.id];
+    const cachedExif = this.imageExifLookup[image.id];
     const exif = cachedExif ?? (await this.getImageExifData(image.url));
 
     return {

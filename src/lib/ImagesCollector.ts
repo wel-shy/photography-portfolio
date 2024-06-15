@@ -9,7 +9,7 @@ class ImagesCollector {
 
   constructor(
     private readonly keys: string[],
-    private readonly imageExifLookup: ImageExifLookup | null
+    private readonly imageExifLookup: ImageExifLookup
   ) {}
 
   async populate() {
