@@ -7,19 +7,7 @@ import {
   useState,
 } from "react";
 import fetchCollections from "../fetchCollections";
-
-export interface Image {
-  url: string;
-  title?: string;
-  description?: string;
-  id: string;
-}
-
-export interface Collection {
-  id: string;
-  title: string;
-  images: Image[];
-}
+import { Collection } from "../lib/types";
 
 interface CollectionsContextState {
   collections: Collection[];

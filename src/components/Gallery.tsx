@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Image } from "../contexts/CollectionsContext";
+import { Image } from "../lib/types";
 
 interface GalleryProps {
   images: Image[];
