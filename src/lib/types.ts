@@ -22,6 +22,7 @@ export interface ExifResult {
   Make: string | null;
   Model: string | null;
   ObjectName: string | null;
+  CreateDate: Date | null;
 }
 
 export type ExifData = Omit<ExifResult, "ExposureTime"> & {
@@ -29,12 +30,13 @@ export type ExifData = Omit<ExifResult, "ExposureTime"> & {
 };
 
 export interface Exif {
-  title: string | null;
+  createdAt: Date | null;
   exposureTime: string | null;
+  focalLength: number | null;
   fStop: number | null;
   ISO: number | null;
   model: string | null;
-  focalLength: number | null;
+  title: string | null;
 }
 
 export type ImageExifLookup = Record<string, Exif | null>;

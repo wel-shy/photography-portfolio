@@ -17,7 +17,6 @@ class ImageFactory {
     };
 
     const cachedExif = (this.imageExifLookup ?? {})[image.id];
-    console.log(cachedExif ? "HIT" : "MISS");
     const exif = cachedExif ?? (await this.getImageExifData(image.url));
 
     return {

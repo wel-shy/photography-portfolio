@@ -22,9 +22,17 @@ const getImageExif = async (url: string): Promise<Exif | null> => {
     return null;
   }
 
-  const { ObjectName: title, FNumber, ISO, Model, FocalLength } = exif;
+  const {
+    ObjectName: title,
+    FNumber,
+    ISO,
+    Model,
+    FocalLength,
+    CreateDate,
+  } = exif;
 
   return {
+    createdAt: CreateDate,
     exposureTime: getExposureTime(exif?.ExposureTime),
     focalLength: FocalLength,
     fStop: FNumber,
