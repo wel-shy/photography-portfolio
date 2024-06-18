@@ -9,9 +9,8 @@ const Footer = () => {
   return (
     <StyledFooter>
       <hr />
-      <div>All content and photographs &copy; Daniel Welsh 2024</div>
+      <div>&copy; Daniel Welsh {new Date().getFullYear()}</div>
       <div>
-        For all enquiries:{" "}
         <a href="mailto:photography@wel-shy.com">photography@wel-shy.com</a>
       </div>
     </StyledFooter>
