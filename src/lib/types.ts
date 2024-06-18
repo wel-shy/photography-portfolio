@@ -35,6 +35,7 @@ export interface Exif {
   focalLength: number | null;
   fStop: number | null;
   ISO: number | null;
+  make: string | null;
   model: string | null;
   title: string | null;
 }

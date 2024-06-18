@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Exif } from "../../lib/types";
+import useExifDetails from "./useExifDetails";
 
 const ExifWrapper = styled.div`
   margin-top: 1em;
@@ -18,11 +19,15 @@ const ExifWrapper = styled.div`
   }
 `;
 
-interface Params {
+interface Props {
   exif: Exif | null;
 }
 
-const ExifDetails = ({ exif }: Params) => {
+const ExifDetails = ({ exif }: Props) => {
+  const { camera, focalLength, detailsString } = useExifDetails({
+    exif,
+  });
+
   if (!exif) {
     return null;
   }
@@ -30,12 +35,9 @@ const ExifDetails = ({ exif }: Params) => {
   return (
     <ExifWrapper>
       <div className="image-title">{exif.title}</div>
-      <div>{exif.model}</div>
-      <div>
-        {exif.exposureTime} / <span className="fstop-label">f</span>
-        {exif.fStop} / ISO {exif.ISO}
-      </div>
-      <div>{exif.focalLength}mm</div>
+      <div>{camera}</div>
+      <div>{detailsString}</div>
+      <div>{focalLength}</div>
     </ExifWrapper>
   );
 };

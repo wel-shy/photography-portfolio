@@ -18,7 +18,11 @@ const getExposureTime = (exposureTime: number | null) => {
 };
 
 const getImageExif = async (url: string): Promise<Exif | null> => {
-  const exif = (await parse(url, true)) as ExifResult;
+  const exif = (await parse(url, {
+    iptc: true,
+    icc: false,
+  })) as ExifResult;
+
   if (!exif) {
     return null;
   }
@@ -30,6 +34,7 @@ const getImageExif = async (url: string): Promise<Exif | null> => {
     Model,
     FocalLength,
     CreateDate,
+    Make,
   } = exif;
 
   return {
@@ -41,6 +46,7 @@ const getImageExif = async (url: string): Promise<Exif | null> => {
     model: Model,
     // Exifr library returns strings in latin1, but I need UTF-8 for text accents.
     title: Buffer.from(title ?? "", "latin1").toString(),
+    make: Make,
   };
 };
 
