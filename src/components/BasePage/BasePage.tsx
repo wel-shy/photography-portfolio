@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import NavBar from "../NavBar"
+import NavBar from "../NavBar/NavBar"
 
 interface Props {
     children: ReactNode
@@ -7,7 +7,7 @@ interface Props {
 
 const BasePage = ({children}: Props) => {
     return <article>
-        <NavBar LeftDetail={<div></div>}/>
+        <NavBar />
         {children}
     </article>
 }

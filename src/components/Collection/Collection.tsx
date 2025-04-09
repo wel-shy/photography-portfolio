@@ -1,4 +1,4 @@
-import CollectionLinks from "../CollectionLinks";
+import BasePage from "../BasePage/BasePage";
 import Gallery from "../Gallery";
 import useCollection from "./useCollection";
 
@@ -10,10 +10,9 @@ const Collection = () => {
   }
 
   return (
-    <div>
-      <CollectionLinks selectedCollection={collection.id} />
+    <BasePage>
       <Gallery images={collection.images} />
-    </div>
+    </BasePage>
   );
 };
 

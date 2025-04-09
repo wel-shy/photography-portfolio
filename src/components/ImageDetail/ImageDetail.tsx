@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import NavBar from "../NavBar";
 import { useParams } from "react-router-dom";
 import useImage from "./useImage";
 import ExifDetails from "./ExifDetails";
+import BasePage from "../BasePage/BasePage";
 
 const ImageDetailsWrapper = styled.div`
   display: flex;
@@ -47,8 +47,7 @@ const ImageDetail = () => {
   };
 
   return (
-    <div>
-      <NavBar LeftDetail={<a href="/">Back</a>} />
+    <BasePage>
       <ImageDetailsWrapper>
         <ImageContainer>
           <StyledImage src={url} alt="" />
@@ -58,7 +57,7 @@ const ImageDetail = () => {
           <ExifDetails exif={exif ?? null} />
         </DetailsContainer>
       </ImageDetailsWrapper>
-    </div>
+    </BasePage>
   );
 };
 

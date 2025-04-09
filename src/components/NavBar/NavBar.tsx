@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
 import styled from "styled-components";
-import Brand from "./Brand";
+import Brand from "../Brand";
+import useCollectionLinksController from "./useCollectionLinksController";
 
 const Wrapper = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ const Wrapper = styled.div`
     display: flex;
   }
 
-  .contact, .divider {
+  .divider, .link-item {
     margin-left: 1em;
     font-weight: bold;
   }
@@ -24,17 +24,18 @@ const Wrapper = styled.div`
   }
 `;
 
+
 interface Props {
-  LeftDetail: ReactNode;
 }
 
-const NavBar = ({ LeftDetail }: Props) => {
+const NavBar = ({  }: Props) => {
+  const {collectionLinks} = useCollectionLinksController()
   return (
     <Wrapper>
       <div className="left">
-        <div className="left-detail">{LeftDetail}</div>
+        <div className="left-detail">{collectionLinks.map((link) => <a className="link-item" href={link.link}>{link.title}</a>)}</div>
         <div className="divider">|</div>
-        <a href="/contact"><div className="contact">Contact</div></a>
+        <a href="/contact"><div className="link-item">Contact</div></a>
       </div>
       <Brand />
     </Wrapper>
