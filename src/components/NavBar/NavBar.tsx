@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Brand from "../Brand";
 import useCollectionLinksController from "./useCollectionLinksController";
+import { useLocation } from "react-router-dom";
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,18 +25,22 @@ const Wrapper = styled.div`
   }
 `;
 
+const LinkItem = styled.a<{active?: boolean}>`
+  margin-left: 1em;
+  font-weight: bold;
+  text-decoration: ${({active}) => active? 'underline':'none'};
+`
 
-interface Props {
-}
-
-const NavBar = ({  }: Props) => {
+const NavBar = () => {
   const {collectionLinks} = useCollectionLinksController()
+  const {pathname} = useLocation()
+
   return (
     <Wrapper>
       <div className="left">
-        <div className="left-detail">{collectionLinks.map((link) => <a className="link-item" href={link.link}>{link.title}</a>)}</div>
+        <div className="left-detail">{collectionLinks.map(({link, title, id}) => <LinkItem href={link} active={pathname.includes(link) || pathname === "/" && id === "Cityscapes"} key={id}>{title}</LinkItem>)}</div>
         <div className="divider">|</div>
-        <a href="/contact"><div className="link-item">Contact</div></a>
+        <LinkItem active={pathname.includes("/contact")} href="/contact"><div>Contact</div></LinkItem>
       </div>
       <Brand />
     </Wrapper>
