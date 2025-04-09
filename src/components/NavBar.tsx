@@ -7,8 +7,14 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100%;
 
-  .left-detail {
+  .left {
     flex: 1;
+    display: flex;
+  }
+
+  .contact, .divider {
+    margin-left: 1em;
+    font-weight: bold;
   }
 
   @media (max-width: 750px) {
@@ -25,7 +31,11 @@ interface Props {
 const NavBar = ({ LeftDetail }: Props) => {
   return (
     <Wrapper>
-      <div className="left-detail">{LeftDetail}</div>
+      <div className="left">
+        <div className="left-detail">{LeftDetail}</div>
+        <div className="divider">|</div>
+        <a href="/contact"><div className="contact">Contact</div></a>
+      </div>
       <Brand />
     </Wrapper>
   );
