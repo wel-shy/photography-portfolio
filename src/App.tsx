@@ -1,7 +1,7 @@
 import React from 'react';
-import GlobalStyle from './GlobalStyle';
 import styled from 'styled-components';
 import { RouterProvider } from 'react-router-dom';
+import GlobalStyle from './GlobalStyle';
 import Router from './Router';
 import { CollectionsProvider } from './contexts/CollectionsContext';
 import Footer from './components/Footer';
@@ -16,7 +16,7 @@ const Main = styled.main`
   flex: 1;
 `;
 
-function App() {
+const App = () => {
   return (
     <CollectionsProvider>
       <GlobalStyle />
@@ -28,6 +28,6 @@ function App() {
       </Container>
     </CollectionsProvider>
   );
-}
+};
 
 export default App;

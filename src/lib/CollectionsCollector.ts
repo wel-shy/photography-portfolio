@@ -9,7 +9,10 @@ class CollectionCollector {
     private readonly imageExifLookup: ImageExifLookup
   ) {}
 
-  private updateCollection(collections: Collection[], collection: Collection) {
+  private static updateCollection(
+    collections: Collection[],
+    collection: Collection
+  ) {
     return collections
       .filter(
         ({ title: collectionTitle }) => collectionTitle !== collection.title
@@ -39,7 +42,7 @@ class CollectionCollector {
           : { title, id: title, images: [image] };
 
       if (collectionIdx != null) {
-        return this.updateCollection(acc, collection);
+        return CollectionCollector.updateCollection(acc, collection);
       }
 
       collectionLookup[title] = acc.length;

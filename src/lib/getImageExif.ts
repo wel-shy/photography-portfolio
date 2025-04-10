@@ -1,6 +1,6 @@
 import { parse } from 'exifr';
-import { Exif, ExifResult } from './types';
 import { Buffer } from 'buffer';
+import { Exif, ExifResult } from './types';
 
 const getExposureTime = (exposureTime: number | null) => {
   if (!exposureTime) {

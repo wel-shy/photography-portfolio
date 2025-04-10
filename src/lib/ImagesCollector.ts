@@ -3,6 +3,7 @@ import { Image, ImageExifLookup } from './types';
 
 class ImagesCollector {
   private _images: Image[] | null = null;
+
   private readonly imageFactory: ImageFactory = new ImageFactory(
     this.imageExifLookup
   );

@@ -1,3 +1,4 @@
+import React from 'react';
 import BasePage from '../../components/BasePage/BasePage';
 import Gallery from '../../components/Gallery';
 import useCollection from './useCollection';

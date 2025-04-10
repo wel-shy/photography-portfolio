@@ -1,3 +1,14 @@
+export interface Exif {
+  createdAt: Date | null;
+  exposureTime: string | null;
+  focalLength: number | null;
+  fStop: number | null;
+  ISO: number | null;
+  make: string | null;
+  model: string | null;
+  title: string | null;
+}
+
 export interface Image {
   url: string;
   title?: string;
@@ -28,16 +39,5 @@ export interface ExifResult {
 export type ExifData = Omit<ExifResult, 'ExposureTime'> & {
   ExposureTime: string | null;
 };
-
-export interface Exif {
-  createdAt: Date | null;
-  exposureTime: string | null;
-  focalLength: number | null;
-  fStop: number | null;
-  ISO: number | null;
-  make: string | null;
-  model: string | null;
-  title: string | null;
-}
 
 export type ImageExifLookup = Record<string, Exif | null>;

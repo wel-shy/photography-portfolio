@@ -6,9 +6,12 @@ const useImage = (imageId: string | undefined) => {
   const { collections } = useCollectionsContext();
 
   const image = useMemo(() => {
-    const images = collections.reduce<Image[]>((acc, { images }) => {
-      return [...acc, ...images];
-    }, []);
+    const images = collections.reduce<Image[]>(
+      (acc, { images: collectionImages }) => {
+        return [...acc, ...collectionImages];
+      },
+      []
+    );
 
     return images.find(({ id }) => imageId === id);
   }, [collections, imageId]);

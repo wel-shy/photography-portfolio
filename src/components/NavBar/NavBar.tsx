@@ -1,7 +1,9 @@
+import React from 'react';
+
 import styled from 'styled-components';
+import { useLocation } from 'react-router-dom';
 import Brand from '../Brand';
 import useCollectionLinksController from './useCollectionLinksController';
-import { useLocation } from 'react-router-dom';
 
 const Wrapper = styled.div`
   display: flex;

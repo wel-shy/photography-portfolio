@@ -4,7 +4,7 @@ import { Image, ImageExifLookup } from './types';
 class ImageFactory {
   constructor(private readonly imageExifLookup: ImageExifLookup) {}
 
-  private async getImageExifData(url: string) {
+  private static async getImageExifData(url: string) {
     return getImageExif(url);
   }
 
@@ -17,7 +17,7 @@ class ImageFactory {
     };
 
     const cachedExif = this.imageExifLookup[image.id];
-    const exif = cachedExif ?? (await this.getImageExifData(image.url));
+    const exif = cachedExif ?? (await ImageFactory.getImageExifData(image.url));
 
     return {
       ...image,
