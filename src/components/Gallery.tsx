@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { Image } from '../lib/types';
 
 interface GalleryProps {
@@ -41,9 +42,9 @@ const Gallery = ({ images }: GalleryProps) => (
   <section>
     <Grid>
       {images.map(({ url, id }) => (
-        <a href={`/images/${id}`} key={id}>
+        <Link to={`/images/${id}`} key={id}>
           <GridItem key={url} className="grid-item" alt="" src={url} />
-        </a>
+        </Link>
       ))}
     </Grid>
   </section>

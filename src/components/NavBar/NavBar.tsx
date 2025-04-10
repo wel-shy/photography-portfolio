@@ -1,59 +1,12 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 
-import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import Brand from '../Brand';
 import useCollectionLinksController from './useCollectionLinksController';
 import { usePreferencesContext } from '../../contexts/PreferencesContext/PreferencesContext';
 import { Themes } from '../../theme';
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
-  width: 100%;
-
-  .left {
-    flex: 1;
-    display: flex;
-  }
-
-  .divider {
-    margin-right: 1em;
-    font-weight: bold;
-  }
-
-  @media (max-width: 750px) {
-    padding-bottom: 2em;
-    align-items: end;
-    display: flex;
-    flex-direction: column-reverse;
-
-    .left-detail {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .divider {
-      display: none;
-    }
-
-    .left {
-      flex-direction: column;
-    }
-  }
-`;
-
-const LinkItem = styled.a<{ active?: boolean }>`
-  margin-right: 1em;
-  font-weight: bold;
-  text-decoration: ${({ active }) => (active ? 'underline' : 'none')};
-
-  @media (max-width: 750px) {
-    text-align: right;
-    margin-right: 0;
-    margin-bottom: 1em;
-  }
-`;
+import { LinkItem, Wrapper } from './styles';
 
 const NavBar = () => {
   const { collectionLinks } = useCollectionLinksController();
@@ -66,7 +19,7 @@ const NavBar = () => {
         <div className="left-detail">
           {collectionLinks.map(({ link, title, id }) => (
             <LinkItem
-              href={link}
+              to={link}
               active={
                 pathname.includes(link) ||
                 (pathname === '/' && id === 'Cityscapes')
@@ -78,13 +31,13 @@ const NavBar = () => {
           ))}
         </div>
         <div className="divider">|</div>
-        <LinkItem active={pathname.includes('/contact')} href="/contact">
+        <LinkItem active={pathname.includes('/contact')} to="/contact">
           <div>Contact</div>
         </LinkItem>
         <div className="divider">|</div>
-        <LinkItem onClick={() => toggleTheme()}>
+        <button onClick={() => toggleTheme()}>
           {theme === Themes.Light ? 'Dark' : 'Light'}
-        </LinkItem>
+        </button>
       </div>
       <Brand />
     </Wrapper>
