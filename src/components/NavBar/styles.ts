@@ -48,3 +48,8 @@ export const LinkItem = styled(Link)<{ active?: boolean }>`
     margin-bottom: 1em;
   }
 `;
+
+export const IconWrapper = styled.div`
+  cursor: pointer;
+  font-size: 1em;
+`;

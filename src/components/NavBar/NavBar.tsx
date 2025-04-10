@@ -1,12 +1,16 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/button-has-type */
 import React from 'react';
 
 import { useLocation } from 'react-router-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import Brand from '../Brand';
 import useCollectionLinksController from './useCollectionLinksController';
 import { usePreferencesContext } from '../../contexts/PreferencesContext/PreferencesContext';
 import { Themes } from '../../theme';
-import { LinkItem, Wrapper } from './styles';
+import { IconWrapper, LinkItem, Wrapper } from './styles';
 
 const NavBar = () => {
   const { collectionLinks } = useCollectionLinksController();
@@ -35,9 +39,9 @@ const NavBar = () => {
           <div>Contact</div>
         </LinkItem>
         <div className="divider">|</div>
-        <button onClick={() => toggleTheme()}>
-          {theme === Themes.Light ? 'Dark' : 'Light'}
-        </button>
+        <IconWrapper onClick={() => toggleTheme()}>
+          {theme === Themes.Light ? <MoonOutlined /> : <SunOutlined />}
+        </IconWrapper>
       </div>
       <Brand />
     </Wrapper>
