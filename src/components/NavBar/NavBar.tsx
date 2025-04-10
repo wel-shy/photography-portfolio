@@ -38,7 +38,7 @@ const NavBar = () => {
   return (
     <Wrapper>
       <div className="left">
-        <div className="left-detail">{collectionLinks.map(({link, title, id}) => <LinkItem href={link} active={pathname.includes(link) || pathname === "/" && id === "Cityscapes"} key={id}>{title}</LinkItem>)}</div>
+        <div className="left-detail">{collectionLinks.map(({link, title, id}) => <LinkItem href={link} active={pathname.includes(link) || (pathname === "/" && id === "Cityscapes")} key={id}>{title}</LinkItem>)}</div>
         <div className="divider">|</div>
         <LinkItem active={pathname.includes("/contact")} href="/contact"><div>Contact</div></LinkItem>
       </div>
