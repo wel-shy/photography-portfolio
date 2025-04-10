@@ -11,7 +11,7 @@ const Footer = () => {
       <hr />
       <div>&copy; Daniel Welsh {new Date().getFullYear()}</div>
       <div>
-        <a href="mailto:photography@wel-shy.com">photography@wel-shy.com</a>
+        <a href="mailto:photography@welshy.net">photography@welshy.net</a>
       </div>
     </StyledFooter>
   );
