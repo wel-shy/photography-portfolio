@@ -5,6 +5,8 @@ import GlobalStyle from './GlobalStyle';
 import Router from './Router';
 import { CollectionsProvider } from './contexts/CollectionsContext';
 import Footer from './components/Footer';
+import { PreferencesProvider } from './contexts/PreferencesContext/PreferencesContext';
+import ThemeProviderWrapper from './components/ThemeProviderWrapper/ThemeProviderWrapper';
 
 const Container = styled.div`
   display: flex;
@@ -18,15 +20,19 @@ const Main = styled.main`
 
 const App = () => {
   return (
-    <CollectionsProvider>
-      <GlobalStyle />
-      <Container>
-        <Main>
-          <RouterProvider router={Router} />
-        </Main>
-        <Footer />
-      </Container>
-    </CollectionsProvider>
+    <PreferencesProvider>
+      <CollectionsProvider>
+        <ThemeProviderWrapper>
+          <GlobalStyle />
+          <Container>
+            <Main>
+              <RouterProvider router={Router} />
+            </Main>
+            <Footer />
+          </Container>
+        </ThemeProviderWrapper>
+      </CollectionsProvider>
+    </PreferencesProvider>
   );
 };
 

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { useLocation } from 'react-router-dom';
 import Brand from '../Brand';
 import useCollectionLinksController from './useCollectionLinksController';
+import { usePreferencesContext } from '../../contexts/PreferencesContext/PreferencesContext';
+import { Themes } from '../../theme';
 
 const Wrapper = styled.div`
   display: flex;
@@ -56,6 +58,7 @@ const LinkItem = styled.a<{ active?: boolean }>`
 const NavBar = () => {
   const { collectionLinks } = useCollectionLinksController();
   const { pathname } = useLocation();
+  const { theme, toggleTheme } = usePreferencesContext();
 
   return (
     <Wrapper>
@@ -77,6 +80,10 @@ const NavBar = () => {
         <div className="divider">|</div>
         <LinkItem active={pathname.includes('/contact')} href="/contact">
           <div>Contact</div>
+        </LinkItem>
+        <div className="divider">|</div>
+        <LinkItem onClick={() => toggleTheme()}>
+          {theme === Themes.Light ? 'Dark' : 'Light'}
         </LinkItem>
       </div>
       <Brand />
