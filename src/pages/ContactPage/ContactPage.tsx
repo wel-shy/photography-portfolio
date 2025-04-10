@@ -11,7 +11,6 @@ const ContactLink = styled.div`
 const ContactPage = () => {
   return (
     <BasePage>
-      <h1>Contact</h1>
       <ContactLink>
         <a
           target="_blank"

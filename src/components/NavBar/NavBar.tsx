@@ -21,9 +21,23 @@ const Wrapper = styled.div`
   }
 
   @media (max-width: 750px) {
-    flex-direction: column-reverse;
     padding-bottom: 2em;
     align-items: end;
+    display: flex;
+    flex-direction: column-reverse;
+
+    .left-detail {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .divider {
+      display: none;
+    }
+
+    .left {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -31,6 +45,12 @@ const LinkItem = styled.a<{ active?: boolean }>`
   margin-right: 1em;
   font-weight: bold;
   text-decoration: ${({ active }) => (active ? 'underline' : 'none')};
+
+  @media (max-width: 750px) {
+    text-align: right;
+    margin-right: 0;
+    margin-bottom: 1em;
+  }
 `;
 
 const NavBar = () => {
