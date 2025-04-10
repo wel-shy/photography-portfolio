@@ -2,10 +2,10 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 body {
-    color: #020202;
+    color: ${({ theme }) => theme.text.color};
     background-color: ${({ theme }) => theme.backgroundColor};
     padding: 2em;
-    font-size: 16px;
+    
     margin: 0 auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -30,7 +30,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #020202;
+    color: ${({ theme }) => theme.text.color};
     transition: all ease 0.5s;
     font-weight: 700;
 }
