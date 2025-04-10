@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import useImage from "./useImage";
 import ExifDetails from "./ExifDetails";
-import BasePage from "../BasePage/BasePage";
+import BasePage from "../../components/BasePage/BasePage";
 
 const ImageDetailsWrapper = styled.div`
   display: flex;

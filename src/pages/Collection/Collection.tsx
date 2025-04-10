@@ -1,5 +1,5 @@
-import BasePage from "../BasePage/BasePage";
-import Gallery from "../Gallery";
+import BasePage from "../../components/BasePage/BasePage";
+import Gallery from "../../components/Gallery";
 import useCollection from "./useCollection";
 
 const Collection = () => {
