@@ -3,6 +3,7 @@ import React, {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -31,6 +32,17 @@ export const PreferencesProvider = ({ children }: { children: ReactNode }) => {
   }, [theme]);
 
   const state = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+
+    setTheme(mq.matches ? Themes.Dark : Themes.Light);
+
+    // This callback will fire if the perferred color scheme changes without a reload
+    mq.addEventListener('change', (evt) =>
+      setTheme(evt.matches ? Themes.Dark : Themes.Light)
+    );
+  }, []);
 
   return (
     <PreferencesContext.Provider value={state}>
