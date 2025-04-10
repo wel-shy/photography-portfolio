@@ -1,5 +1,5 @@
-import getImageExif from "./getImageExif";
-import { Image, ImageExifLookup } from "./types";
+import getImageExif from './getImageExif';
+import { Image, ImageExifLookup } from './types';
 
 class ImageFactory {
   constructor(private readonly imageExifLookup: ImageExifLookup) {}
@@ -9,10 +9,10 @@ class ImageFactory {
   }
 
   public async createImageFromKey(key: string): Promise<Image> {
-    const [, , imageId] = key.split("/");
+    const [, , imageId] = key.split('/');
 
     const image = {
-      id: imageId.split(".")[0],
+      id: imageId.split('.')[0],
       url: `${process.env.REACT_APP_CDN_BASE_URL}/${key}`,
     };
 

@@ -1,7 +1,7 @@
-import { useMemo } from "react";
-import { Exif } from "../../lib/types";
+import { useMemo } from 'react';
+import { Exif } from '../../lib/types';
 
-const ignoredMakes = ["Canon"];
+const ignoredMakes = ['Canon'];
 
 interface Params {
   exif: Exif | null;
@@ -13,10 +13,10 @@ const useExifDetails = ({ exif }: Params) => {
       return null;
     }
 
-    const make = ignoredMakes.includes(exif?.make ?? "") ? null : exif?.make;
+    const make = ignoredMakes.includes(exif?.make ?? '') ? null : exif?.make;
 
     return {
-      camera: `${make ?? ""} ${exif?.model ?? ""}`.trim(),
+      camera: `${make ?? ''} ${exif?.model ?? ''}`.trim(),
       fStop: exif?.fStop ? `f${exif?.fStop}` : null,
       focalLength: exif?.focalLength ? `${exif?.focalLength}mm` : null,
       iso: `ISO ${exif?.ISO}`,
@@ -28,7 +28,7 @@ const useExifDetails = ({ exif }: Params) => {
     focalLength: details?.focalLength,
     detailsString: [exif?.exposureTime, details?.fStop, details?.iso]
       .filter((el) => !!el)
-      .join(" / "),
+      .join(' / '),
   };
 };
 

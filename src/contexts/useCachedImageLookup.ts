@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { Collection, ImageExifLookup } from "../lib/types";
+import { useEffect, useState } from 'react';
+import { Collection, ImageExifLookup } from '../lib/types';
 
-const IMAGE_EXIF_CACHE_KEY = "image-exif";
+const IMAGE_EXIF_CACHE_KEY = 'image-exif';
 
 type CachedExifLookup = ImageExifLookup & { expiresAt: string };
 

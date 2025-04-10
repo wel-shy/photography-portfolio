@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
-import { useCollectionsContext } from "../../contexts/CollectionsContext";
-import { useMemo } from "react";
-import { Collection } from "../../lib/types";
+import { useParams } from 'react-router-dom';
+import { useCollectionsContext } from '../../contexts/CollectionsContext';
+import { useMemo } from 'react';
+import { Collection } from '../../lib/types';
 
 const sortCollectionImages = (collection: Collection) => {
   const images = collection?.images.sort((a, b) => {

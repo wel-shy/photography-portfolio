@@ -1,10 +1,10 @@
-import React from "react";
-import GlobalStyle from "./GlobalStyle";
-import styled from "styled-components";
-import { RouterProvider } from "react-router-dom";
-import Router from "./Router";
-import { CollectionsProvider } from "./contexts/CollectionsContext";
-import Footer from "./components/Footer";
+import React from 'react';
+import GlobalStyle from './GlobalStyle';
+import styled from 'styled-components';
+import { RouterProvider } from 'react-router-dom';
+import Router from './Router';
+import { CollectionsProvider } from './contexts/CollectionsContext';
+import Footer from './components/Footer';
 
 const Container = styled.div`
   display: flex;

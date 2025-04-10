@@ -25,7 +25,7 @@ export interface ExifResult {
   CreateDate: Date | null;
 }
 
-export type ExifData = Omit<ExifResult, "ExposureTime"> & {
+export type ExifData = Omit<ExifResult, 'ExposureTime'> & {
   ExposureTime: string | null;
 };
 

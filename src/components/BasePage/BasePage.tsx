@@ -1,15 +1,17 @@
-import { ReactNode } from "react"
-import NavBar from "../NavBar/NavBar"
+import { ReactNode } from 'react';
+import NavBar from '../NavBar/NavBar';
 
 interface Props {
-    children: ReactNode
+  children: ReactNode;
 }
 
-const BasePage = ({children}: Props) => {
-    return <article>
-        <NavBar />
-        {children}
+const BasePage = ({ children }: Props) => {
+  return (
+    <article>
+      <NavBar />
+      {children}
     </article>
-}
+  );
+};
 
-export default BasePage
+export default BasePage;

@@ -1,5 +1,5 @@
-import ImageFactory from "./ImageFactory";
-import { Image, ImageExifLookup } from "./types";
+import ImageFactory from './ImageFactory';
+import { Image, ImageExifLookup } from './types';
 
 class ImagesCollector {
   private _images: Image[] | null = null;
@@ -14,7 +14,7 @@ class ImagesCollector {
 
   async populate() {
     const filteredKeys = this.keys.filter(
-      (key) => key && key.includes("portfolio")
+      (key) => key && key.includes('portfolio')
     );
 
     this._images = await Promise.all(
@@ -24,7 +24,7 @@ class ImagesCollector {
 
   get images(): Image[] {
     if (!this._images) {
-      throw new Error("Images must be populated");
+      throw new Error('Images must be populated');
     }
     return this._images;
   }

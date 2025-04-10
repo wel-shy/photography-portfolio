@@ -5,10 +5,10 @@ import {
   useEffect,
   useMemo,
   useState,
-} from "react";
-import fetchCollections from "../fetchCollections";
-import { Collection } from "../lib/types";
-import useCachedImageLookup from "./useCachedImageLookup";
+} from 'react';
+import fetchCollections from '../fetchCollections';
+import { Collection } from '../lib/types';
+import useCachedImageLookup from './useCachedImageLookup';
 
 interface CollectionsContextState {
   collections: Collection[];
@@ -43,7 +43,7 @@ export const useCollectionsContext = () => {
   const context = useContext(CollectionsContext);
 
   if (!context) {
-    throw new Error("Context must be used within a CollectionsProvider");
+    throw new Error('Context must be used within a CollectionsProvider');
   }
 
   return context;

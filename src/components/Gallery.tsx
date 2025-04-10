@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Image } from "../lib/types";
+import styled from 'styled-components';
+import { Image } from '../lib/types';
 
 interface GalleryProps {
   images: Image[];
@@ -21,7 +21,7 @@ const Grid = styled.div`
 `;
 
 const GridItem = styled.img<{ isPano?: boolean }>`
-  aspect-ratio: ${({ isPano }) => (isPano ? "2/1" : "1/1")};
+  aspect-ratio: ${({ isPano }) => (isPano ? '2/1' : '1/1')};
   grid-column: span ${({ isPano }) => (isPano ? 2 : 1)};
   height: 100%;
   object-fit: cover;
@@ -29,7 +29,8 @@ const GridItem = styled.img<{ isPano?: boolean }>`
   width: 100%;
 
   &:hover {
-    box-shadow: 11px 12px 18px -5px rgba(0, 0, 0, 0.1),
+    box-shadow:
+      11px 12px 18px -5px rgba(0, 0, 0, 0.1),
       0px 10px 15px -3px rgba(0, 0, 0, 0.1);
     cursor: pointer;
   }

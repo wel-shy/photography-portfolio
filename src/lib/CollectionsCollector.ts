@@ -1,5 +1,5 @@
-import ImagesCollector from "./ImagesCollector";
-import { Collection, ImageExifLookup } from "./types";
+import ImagesCollector from './ImagesCollector';
+import { Collection, ImageExifLookup } from './types';
 
 class CollectionCollector {
   private _collections: Collection[] | null = null;
@@ -27,7 +27,7 @@ class CollectionCollector {
     await imagesCollector.populate();
 
     return imagesCollector.images.reduce<Collection[]>((acc, image) => {
-      const title = image.url.split("/")[4];
+      const title = image.url.split('/')[4];
       const collectionIdx = collectionLookup[title];
 
       const collection =
@@ -53,7 +53,7 @@ class CollectionCollector {
 
   get collections(): Collection[] {
     if (this._collections === null) {
-      throw new Error("Collections must be populated");
+      throw new Error('Collections must be populated');
     }
 
     return this._collections;

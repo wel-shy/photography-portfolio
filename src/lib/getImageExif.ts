@@ -1,6 +1,6 @@
-import { parse } from "exifr";
-import { Exif, ExifResult } from "./types";
-import { Buffer } from "buffer";
+import { parse } from 'exifr';
+import { Exif, ExifResult } from './types';
+import { Buffer } from 'buffer';
 
 const getExposureTime = (exposureTime: number | null) => {
   if (!exposureTime) {
@@ -45,7 +45,7 @@ const getImageExif = async (url: string): Promise<Exif | null> => {
     ISO,
     model: Model,
     // Exifr library returns strings in latin1, but I need UTF-8 for text accents.
-    title: Buffer.from(title ?? "", "latin1").toString(),
+    title: Buffer.from(title ?? '', 'latin1').toString(),
     make: Make,
   };
 };

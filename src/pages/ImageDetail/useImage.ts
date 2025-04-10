@@ -1,6 +1,6 @@
-import { useMemo } from "react";
-import { useCollectionsContext } from "../../contexts/CollectionsContext";
-import { Image } from "../../lib/types";
+import { useMemo } from 'react';
+import { useCollectionsContext } from '../../contexts/CollectionsContext';
+import { Image } from '../../lib/types';
 
 const useImage = (imageId: string | undefined) => {
   const { collections } = useCollectionsContext();

@@ -1,26 +1,26 @@
-import * as React from "react";
-import { createBrowserRouter } from "react-router-dom";
-import ImageDetail from "./pages/ImageDetail/ImageDetail";
-import ContactPage from "./pages/ContactPage/ContactPage";
-import Collection from "./pages/Collection/Collection";
+import * as React from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import ImageDetail from './pages/ImageDetail/ImageDetail';
+import ContactPage from './pages/ContactPage/ContactPage';
+import Collection from './pages/Collection/Collection';
 
 const Router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Collection />,
   },
   {
-    path: "/collections/:id",
+    path: '/collections/:id',
     element: <Collection />,
   },
   {
-    path: "/images/:imageId",
+    path: '/images/:imageId',
     element: <ImageDetail />,
   },
   {
-    path: "/contact",
-    element: <ContactPage/>
-  }
+    path: '/contact',
+    element: <ContactPage />,
+  },
 ]);
 
 export default Router;

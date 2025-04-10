@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { Exif } from "../../lib/types";
-import useExifDetails from "./useExifDetails";
+import styled from 'styled-components';
+import { Exif } from '../../lib/types';
+import useExifDetails from './useExifDetails';
 
 const ExifWrapper = styled.div`
   margin-top: 1em;
