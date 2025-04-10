@@ -52,4 +52,8 @@ export const LinkItem = styled(Link)<{ active?: boolean }>`
 export const IconWrapper = styled.div`
   cursor: pointer;
   font-size: 1em;
+
+  @media (max-width: 750px) {
+    text-align: right;
+  }
 `;
