@@ -13,8 +13,8 @@ const Wrapper = styled.div`
     display: flex;
   }
 
-  .divider, .link-item {
-    margin-left: 1em;
+  .divider {
+    margin-right: 1em;
     font-weight: bold;
   }
 
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 `;
 
 const LinkItem = styled.a<{active?: boolean}>`
-  margin-left: 1em;
+  margin-right: 1em;
   font-weight: bold;
   text-decoration: ${({active}) => active? 'underline':'none'};
 `
