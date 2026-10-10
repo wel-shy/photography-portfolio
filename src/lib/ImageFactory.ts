@@ -13,7 +13,7 @@ class ImageFactory {
 
     const image = {
       id: imageId.split('.')[0],
-      url: `${process.env.REACT_APP_CDN_BASE_URL}/${key}`,
+      url: `${import.meta.env.VITE_CDN_BASE_URL}/${key}`,
     };
 
     const cachedExif = this.imageExifLookup[image.id];

@@ -1,10 +1,6 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/button-has-type */
 import React from 'react';
 
 import { useLocation } from 'react-router-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import Brand from '../Brand';
 import useCollectionLinksController from './useCollectionLinksController';

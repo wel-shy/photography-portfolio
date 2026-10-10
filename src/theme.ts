@@ -1,6 +1,5 @@
 import { DefaultTheme } from 'styled-components';
 
-// eslint-disable-next-line no-shadow
 export enum Themes {
   Light,
   Dark,

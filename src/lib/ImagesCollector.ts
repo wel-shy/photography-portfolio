@@ -4,14 +4,14 @@ import { Image, ImageExifLookup } from './types';
 class ImagesCollector {
   private _images: Image[] | null = null;
 
-  private readonly imageFactory: ImageFactory = new ImageFactory(
-    this.imageExifLookup
-  );
+  private readonly imageFactory: ImageFactory;
 
   constructor(
     private readonly keys: string[],
-    private readonly imageExifLookup: ImageExifLookup
-  ) {}
+    imageExifLookup: ImageExifLookup
+  ) {
+    this.imageFactory = new ImageFactory(imageExifLookup);
+  }
 
   async populate() {
     const filteredKeys = this.keys.filter(
