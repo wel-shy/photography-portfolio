@@ -14,7 +14,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     max-width: 1400px;
     
-    font-family: "Bitter", serif;
+    font-family: "Bitter Variable", serif;
     font-optical-sizing: auto;
 }
 

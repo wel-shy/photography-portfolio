@@ -6,6 +6,10 @@ const StyledFooter = styled.footer`
   font-style: italic;
 `;
 
+const PrivacyLink = styled.div`
+  padding-top: 0.75em;
+`;
+
 const Footer = () => {
   return (
     <StyledFooter>
@@ -14,6 +18,9 @@ const Footer = () => {
       <div>
         <a href="mailto:photography@welshy.net">photography@welshy.net</a>
       </div>
+      <PrivacyLink>
+        <a href="/privacy">Privacy</a>
+      </PrivacyLink>
     </StyledFooter>
   );
 };

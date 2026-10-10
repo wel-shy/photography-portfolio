@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import '@fontsource-variable/bitter';
+import '@fontsource-variable/bitter/wght-italic.css';
 import reportWebVitals from './reportWebVitals';
 import App from './App';
 

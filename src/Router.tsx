@@ -3,6 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import ImageDetail from './pages/ImageDetail/ImageDetail';
 import ContactPage from './pages/ContactPage/ContactPage';
 import Collection from './pages/Collection/Collection';
+import PrivacyPage from './pages/PrivacyPage/PrivacyPage';
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const Router = createBrowserRouter([
   {
     path: '/contact',
     element: <ContactPage />,
+  },
+  {
+    path: '/privacy',
+    element: <PrivacyPage />,
   },
 ]);
 
