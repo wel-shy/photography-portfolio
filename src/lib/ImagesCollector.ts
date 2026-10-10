@@ -18,8 +18,20 @@ class ImagesCollector {
       (key) => key && key.includes('portfolio')
     );
 
+    // Thumbnails mirror the image keys under their own prefix
+    const allKeys = new Set(this.keys);
+    const getThumbnailKey = (key: string) => {
+      const thumbnailKey = key.replace(/^portfolio\//, 'thumbnails/');
+
+      return thumbnailKey !== key && allKeys.has(thumbnailKey)
+        ? thumbnailKey
+        : undefined;
+    };
+
     this._images = await Promise.all(
-      filteredKeys.map(async (key) => this.imageFactory.createImageFromKey(key))
+      filteredKeys.map(async (key) =>
+        this.imageFactory.createImageFromKey(key, getThumbnailKey(key))
+      )
     );
   }
 

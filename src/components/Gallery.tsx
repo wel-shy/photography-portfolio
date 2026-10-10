@@ -41,13 +41,13 @@ const GridItem = styled.img<{ isPano?: boolean }>`
 const Gallery = ({ images }: GalleryProps) => (
   <section>
     <Grid>
-      {images.map(({ url, id, exif }) => (
+      {images.map(({ thumbnailUrl, id, exif }) => (
         <Link to={`/images/${id}`} key={id}>
           <GridItem
-            key={url}
+            key={thumbnailUrl}
             className="grid-item"
             alt={exif?.title ?? ''}
-            src={url}
+            src={thumbnailUrl}
           />
         </Link>
       ))}

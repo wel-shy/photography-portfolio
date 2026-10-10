@@ -8,12 +8,23 @@ class ImageFactory {
     return getImageExif(url);
   }
 
-  public async createImageFromKey(key: string): Promise<Image> {
+  /**
+   * @param key Key of the full size image, e.g. portfolio/Cityscapes/1.jpg
+   * @param thumbnailKey Key of its thumbnail, when one has been uploaded
+   */
+  public async createImageFromKey(
+    key: string,
+    thumbnailKey?: string
+  ): Promise<Image> {
     const [, , imageId] = key.split('/');
 
+    const url = `${import.meta.env.VITE_CDN_BASE_URL}/${key}`;
     const image = {
       id: imageId.split('.')[0],
-      url: `${import.meta.env.VITE_CDN_BASE_URL}/${key}`,
+      url,
+      thumbnailUrl: thumbnailKey
+        ? `${import.meta.env.VITE_CDN_BASE_URL}/${thumbnailKey}`
+        : url,
     };
 
     const cachedExif = this.imageExifLookup[image.id];

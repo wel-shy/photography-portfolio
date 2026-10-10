@@ -11,6 +11,7 @@ export interface Exif {
 
 export interface Image {
   url: string;
+  thumbnailUrl: string;
   title?: string;
   description?: string;
   id: string;
