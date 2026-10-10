@@ -2,6 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 import BasePage from '../../components/BasePage/BasePage';
+import usePageMeta from '../../usePageMeta';
 
 const ContactLink = styled.div`
   cursor: pointer;
@@ -9,6 +10,12 @@ const ContactLink = styled.div`
 `;
 
 const ContactPage = () => {
+  usePageMeta({
+    title: 'Contact',
+    description:
+      'Get in touch with Daniel Welsh via Instagram, email or Bluesky.',
+  });
+
   return (
     <BasePage>
       <ContactLink>

@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import useImage from './useImage';
 import ExifDetails from './ExifDetails';
 import BasePage from '../../components/BasePage/BasePage';
+import usePageMeta from '../../usePageMeta';
 
 const ImageDetailsWrapper = styled.div`
   display: flex;
@@ -46,12 +47,20 @@ const ImageDetail = () => {
   const { url, exif } = useImage(imageId) ?? {
     url: undefined,
   };
+  const title = exif?.title || null;
+
+  usePageMeta({
+    title: title ?? 'Photo',
+    description: title
+      ? `${title}, photographed by Daniel Welsh.`
+      : 'A photograph by Daniel Welsh.',
+  });
 
   return (
     <BasePage>
       <ImageDetailsWrapper>
         <ImageContainer>
-          <StyledImage src={url} alt="" />
+          <StyledImage src={url} alt={title ?? ''} />
         </ImageContainer>
 
         <DetailsContainer>
