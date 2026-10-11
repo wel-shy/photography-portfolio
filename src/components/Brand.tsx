@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 
 const H1 = styled.h1`

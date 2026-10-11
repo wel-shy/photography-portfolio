@@ -7,7 +7,7 @@ import { importX } from 'eslint-plugin-import-x';
 import prettier from 'eslint-plugin-prettier/recommended';
 
 export default tseslint.config(
-  { ignores: ['build', 'node_modules'] },
+  { ignores: ['build', 'node_modules', '.react-router'] },
   js.configs.recommended,
   tseslint.configs.recommended,
   importX.flatConfigs.recommended,

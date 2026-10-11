@@ -1,6 +1,7 @@
 export interface Exif {
-  createdAt: Date | null;
-  exposureTime: string | null;
+  createdAt: string | null;
+  /** In seconds */
+  exposureTime: number | null;
   focalLength: number | null;
   fStop: number | null;
   ISO: number | null;
@@ -12,8 +13,6 @@ export interface Exif {
 export interface Image {
   url: string;
   thumbnailUrl: string;
-  title?: string;
-  description?: string;
   id: string;
   exif: Exif | null;
 }
@@ -24,21 +23,22 @@ export interface Collection {
   images: Image[];
 }
 
-export interface ExifResult {
-  DateTimeOriginal: Date | null;
-  ExposureTime: number;
-  FNumber: number | null;
-  FocalLength: number | null;
-  ISO: number | null;
-  LensModel: string | null;
-  Make: string | null;
-  Model: string | null;
-  ObjectName: string | null;
-  CreateDate: Date | null;
+export interface ManifestImage {
+  id: string;
+  /** Key of the full size image, e.g. portfolio/Cityscapes/1.jpg */
+  key: string;
+  /** Key of its thumbnail, when one has been uploaded */
+  thumbnailKey: string | null;
+  exif: Exif | null;
 }
 
-export type ExifData = Omit<ExifResult, 'ExposureTime'> & {
-  ExposureTime: string | null;
-};
+export interface ManifestCollection {
+  id: string;
+  title: string;
+  images: ManifestImage[];
+}
 
-export type ImageExifLookup = Record<string, Exif | null>;
+/** Written to the CDN alongside the images whenever they are synced */
+export interface Manifest {
+  collections: ManifestCollection[];
+}

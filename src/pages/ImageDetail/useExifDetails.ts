@@ -3,6 +3,21 @@ import { Exif } from '../../lib/types';
 
 const ignoredMakes = ['Canon'];
 
+const getExposureTime = (exposureTime: number | null) => {
+  if (!exposureTime) {
+    return null;
+  }
+
+  if (exposureTime >= 1.0) {
+    return `${exposureTime}s`;
+  }
+
+  const base = 1000;
+  const num = exposureTime * 1000;
+
+  return `1/${Math.ceil(base / num)}s`;
+};
+
 interface Params {
   exif: Exif | null;
 }
@@ -26,7 +41,11 @@ const useExifDetails = ({ exif }: Params) => {
   return {
     camera: details?.camera,
     focalLength: details?.focalLength,
-    detailsString: [exif?.exposureTime, details?.fStop, details?.iso]
+    detailsString: [
+      getExposureTime(exif?.exposureTime ?? null),
+      details?.fStop,
+      details?.iso,
+    ]
       .filter((el) => !!el)
       .join(' / '),
   };

@@ -2,20 +2,23 @@ import React from 'react';
 
 import styled from 'styled-components';
 import BasePage from '../../components/BasePage/BasePage';
-import usePageMeta from '../../usePageMeta';
+import pageMeta from '../../lib/pageMeta';
+import type { Route } from './+types/ContactPage';
 
 const ContactLink = styled.div`
   cursor: pointer;
   margin-bottom: 1em;
 `;
 
-const ContactPage = () => {
-  usePageMeta({
+export const meta = ({ location }: Route.MetaArgs) =>
+  pageMeta({
+    pathname: location.pathname,
     title: 'Contact',
     description:
       'Get in touch with Daniel Welsh via Instagram, email or Bluesky.',
   });
 
+const ContactPage = () => {
   return (
     <BasePage>
       <ContactLink>

@@ -6,7 +6,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "types": ["vite/client", "vitest/globals"],
+    "types": ["node", "vite/client", "vitest/globals"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,10 +20,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "resolvePackageJsonImports": true
+    "resolvePackageJsonImports": true,
+    "rootDirs": [".", "./.react-router/types"]
   },
   "include": [
     "src",
+    ".react-router/types/**/*",
+    "react-router.config.ts",
     "vite.config.ts"
   ]
 }

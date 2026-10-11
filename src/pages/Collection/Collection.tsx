@@ -1,27 +1,38 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { data } from 'react-router';
 import BasePage from '../../components/BasePage/BasePage';
 import Gallery from '../../components/Gallery';
-import useCollection from './useCollection';
-import usePageMeta from '../../usePageMeta';
+import { getCollection } from '../../lib/collections.server';
+import pageMeta from '../../lib/pageMeta';
+import type { Route } from './+types/Collection';
 
-const Collection = () => {
-  const { id } = useParams();
-  const collection = useCollection();
+export const loader = async ({ params }: Route.LoaderArgs) => {
+  const collection = await getCollection(params.id);
+
+  if (!collection) {
+    throw data(null, { status: 404 });
+  }
+
+  return { collection };
+};
+
+export const meta = ({ loaderData, params, location }: Route.MetaArgs) => {
+  const collection = loaderData?.collection;
 
   // The home page shows the first collection but keeps the site's default title
-  usePageMeta(
-    id && collection
+  return pageMeta({
+    pathname: location.pathname,
+    ...(params.id && collection
       ? {
           title: collection.title,
           description: `${collection.title} photography by Daniel Welsh.`,
         }
-      : {}
-  );
+      : {}),
+  });
+};
 
-  if (!collection) {
-    return null;
-  }
+const Collection = ({ loaderData }: Route.ComponentProps) => {
+  const { collection } = loaderData;
 
   return (
     <BasePage>

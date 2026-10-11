@@ -1,9 +1,36 @@
-import { createGlobalStyle } from 'styled-components';
+import { DefaultTheme, createGlobalStyle, css } from 'styled-components';
+import { DarkTheme, LightTheme } from './theme';
 
+const themeVariables = (theme: DefaultTheme) => css`
+  --background-color: ${theme.backgroundColor};
+  --text-color: ${theme.text.color};
+`;
+
+// The theme is applied in CSS so prerendered pages have the right colours before
+// any JavaScript has run
 const GlobalStyle = createGlobalStyle`
+:root {
+    ${themeVariables(LightTheme)}
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        ${themeVariables(DarkTheme)}
+    }
+}
+
+/* Set by the theme toggle, which overrides the system preference */
+:root[data-theme='light'] {
+    ${themeVariables(LightTheme)}
+}
+
+:root[data-theme='dark'] {
+    ${themeVariables(DarkTheme)}
+}
+
 body {
-    color: ${({ theme }) => theme.text.color};
-    background-color: ${({ theme }) => theme.backgroundColor};
+    color: var(--text-color);
+    background-color: var(--background-color);
     padding: 2em;
     
     margin: 0 auto;
@@ -30,7 +57,7 @@ body {
 
 a {
     text-decoration: none;
-    color: ${({ theme }) => theme.text.color};
+    color: var(--text-color);
     transition: all ease 0.5s;
     font-weight: 700;
 }

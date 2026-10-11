@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
-import useImage from './useImage';
+import { data } from 'react-router';
 import ExifDetails from './ExifDetails';
 import BasePage from '../../components/BasePage/BasePage';
-import usePageMeta from '../../usePageMeta';
+import { getImage } from '../../lib/collections.server';
+import pageMeta from '../../lib/pageMeta';
+import type { Route } from './+types/ImageDetail';
 
 const ImageDetailsWrapper = styled.div`
   display: flex;
@@ -42,19 +43,31 @@ const DetailsContainer = styled.div`
   }
 `;
 
-const ImageDetail = () => {
-  const { imageId } = useParams();
-  const { url, exif } = useImage(imageId) ?? {
-    url: undefined,
-  };
-  const title = exif?.title || null;
+export const loader = async ({ params }: Route.LoaderArgs) => {
+  const image = await getImage(params.imageId);
 
-  usePageMeta({
+  if (!image) {
+    throw data(null, { status: 404 });
+  }
+
+  return { image };
+};
+
+export const meta = ({ loaderData, location }: Route.MetaArgs) => {
+  const title = loaderData?.image.exif?.title || null;
+
+  return pageMeta({
+    pathname: location.pathname,
     title: title ?? 'Photo',
     description: title
       ? `${title}, photographed by Daniel Welsh.`
       : 'A photograph by Daniel Welsh.',
   });
+};
+
+const ImageDetail = ({ loaderData }: Route.ComponentProps) => {
+  const { url, exif } = loaderData.image;
+  const title = exif?.title || null;
 
   return (
     <BasePage>
@@ -64,7 +77,7 @@ const ImageDetail = () => {
         </ImageContainer>
 
         <DetailsContainer>
-          <ExifDetails exif={exif ?? null} />
+          <ExifDetails exif={exif} />
         </DetailsContainer>
       </ImageDetailsWrapper>
     </BasePage>

@@ -1,14 +1,16 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { reactRouter } from '@react-router/dev/vite';
 
 export default defineConfig({
-  plugins: [react()],
+  // The React Router plugin cannot run inside Vitest
+  plugins: [!process.env.VITEST && reactRouter()],
   server: {
     port: 3000,
   },
-  build: {
-    outDir: 'build',
+  ssr: {
+    // Its CommonJS build cannot be imported by name from the server build
+    noExternal: ['styled-components'],
   },
   test: {
     environment: 'jsdom',

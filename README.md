@@ -1,6 +1,8 @@
 # Welshy Photography
 
-Photography portfolio built with React, TypeScript and [Vite](https://vite.dev).
+Photography portfolio built with React, TypeScript, [React Router](https://reactrouter.com) and [Vite](https://vite.dev).
+
+Every page is prerendered to static HTML at build time from the `manifest.json` on the CDN, which lists each collection and its images. The site has to be rebuilt for newly uploaded photos to appear.
 
 ## Available Scripts
 
@@ -10,7 +12,7 @@ Runs the app in development mode at [http://localhost:3000](http://localhost:300
 
 ### `npm run build`
 
-Type-checks the project and builds it for production to the `build` folder.
+Type-checks the project and prerenders every page for production to the `build/client` folder.
 
 ### `npm run preview`
 

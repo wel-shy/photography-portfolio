@@ -1,15 +1,18 @@
 import React from 'react';
 
-import { useLocation } from 'react-router-dom';
+import { useLocation, useRouteLoaderData } from 'react-router';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
 import Brand from '../Brand';
-import useCollectionLinksController from './useCollectionLinksController';
 import { usePreferencesContext } from '../../contexts/PreferencesContext/PreferencesContext';
 import { Themes } from '../../theme';
 import { IconWrapper, LinkItem, Wrapper } from './styles';
+import type { loader } from '../../root';
 
 const NavBar = () => {
-  const { collectionLinks } = useCollectionLinksController();
+  // Missing when the root loader itself failed
+  const { collectionLinks } = useRouteLoaderData<typeof loader>('root') ?? {
+    collectionLinks: [],
+  };
   const { pathname } = useLocation();
   const { theme, toggleTheme } = usePreferencesContext();
 

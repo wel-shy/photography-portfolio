@@ -25,3 +25,5 @@ User-agent: DataForSeoBot
 User-agent: PetalBot
 User-agent: img2dataset
 Disallow: /
+
+Sitemap: https://photography.welshy.net/sitemap.xml

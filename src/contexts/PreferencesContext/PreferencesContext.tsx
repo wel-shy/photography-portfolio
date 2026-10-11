@@ -22,13 +22,12 @@ export const PreferencesProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Themes>(Themes.Light);
 
   const toggleTheme = useCallback(() => {
-    if (theme === Themes.Dark) {
-      setTheme(Themes.Light);
+    const nextTheme = theme === Themes.Dark ? Themes.Light : Themes.Dark;
 
-      return;
-    }
-
-    setTheme(Themes.Dark);
+    // See GlobalStyle, which follows the system preference until this is set
+    document.documentElement.dataset.theme =
+      nextTheme === Themes.Dark ? 'dark' : 'light';
+    setTheme(nextTheme);
   }, [theme]);
 
   const state = useMemo(() => ({ theme, toggleTheme }), [theme, toggleTheme]);
@@ -39,9 +38,10 @@ export const PreferencesProvider = ({ children }: { children: ReactNode }) => {
     setTheme(mq.matches ? Themes.Dark : Themes.Light);
 
     // This callback will fire if the perferred color scheme changes without a reload
-    mq.addEventListener('change', (evt) =>
-      setTheme(evt.matches ? Themes.Dark : Themes.Light)
-    );
+    mq.addEventListener('change', (evt) => {
+      delete document.documentElement.dataset.theme;
+      setTheme(evt.matches ? Themes.Dark : Themes.Light);
+    });
   }, []);
 
   return (

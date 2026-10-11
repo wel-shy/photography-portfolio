@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import BasePage from '../../components/BasePage/BasePage';
-import usePageMeta from '../../usePageMeta';
+import pageMeta from '../../lib/pageMeta';
+import type { Route } from './+types/PrivacyPage';
 
 const Content = styled.section`
   max-width: 45em;
@@ -20,13 +21,15 @@ const Content = styled.section`
   }
 `;
 
-const PrivacyPage = () => {
-  usePageMeta({
+export const meta = ({ location }: Route.MetaArgs) =>
+  pageMeta({
+    pathname: location.pathname,
     title: 'Privacy',
     description:
       'How personal data is handled when you visit Daniel Welsh Photography.',
   });
 
+const PrivacyPage = () => {
   return (
     <BasePage>
       <Content>
