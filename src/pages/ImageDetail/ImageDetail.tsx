@@ -7,6 +7,7 @@ import BasePage from '../../components/BasePage/BasePage';
 import { getImage } from '../../lib/collections.server';
 import { getImageDescription, getImageName } from '../../lib/describeImage';
 import pageMeta from '../../lib/pageMeta';
+import { getImageStructuredData } from '../../lib/structuredData';
 import type { Route } from './+types/ImageDetail';
 
 const ImageDetailsWrapper = styled.div`
@@ -102,6 +103,9 @@ export const meta = ({ loaderData, location }: Route.MetaArgs) => {
     image: loaderData?.image,
     title: getImageName(exif) ?? 'Photo',
     description: getImageDescription(exif),
+    structuredData: loaderData
+      ? [getImageStructuredData(loaderData.image, location.pathname)]
+      : [],
   });
 };
 

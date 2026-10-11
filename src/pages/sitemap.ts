@@ -12,19 +12,34 @@ const escapeXml = (value: string) =>
 const getLoc = (url: string) => escapeXml(encodeURI(url));
 
 /**
+ * When the most recently changed of the images was changed, which is when the
+ * page showing them last changed
+ */
+const getLastModified = (images: Image[]) =>
+  images
+    .map(({ modifiedAt }) => modifiedAt)
+    .filter(Boolean)
+    .sort()
+    .at(-1);
+
+/**
  * @param pathname
  * @param images Thumbnails shown on the page, which search engines may index
  */
-const getUrlEntry = (pathname: string, images: Image[] = []) =>
-  [
+const getUrlEntry = (pathname: string, images: Image[] = []) => {
+  const lastModified = getLastModified(images);
+
+  return [
     '  <url>',
     `    <loc>${getLoc(getPageUrl(pathname))}</loc>`,
+    ...(lastModified ? [`    <lastmod>${lastModified}</lastmod>`] : []),
     ...images.map(
       ({ thumbnailUrl }) =>
         `    <image:image><image:loc>${getLoc(thumbnailUrl)}</image:loc></image:image>`
     ),
     '  </url>',
   ].join('\n');
+};
 
 export const loader = async () => {
   const collections = await getCollections();

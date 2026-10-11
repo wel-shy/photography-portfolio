@@ -12,6 +12,8 @@ interface PageMeta {
   description?: string | null;
   /** Shown when the page is shared. Only thumbnails can be fetched by other sites. */
   image?: Image | null;
+  /** schema.org descriptions of the page, see structuredData */
+  structuredData?: object[];
 }
 
 export const getPageUrl = (pathname: string) =>
@@ -26,6 +28,7 @@ const pageMeta = ({
   title,
   description,
   image,
+  structuredData = [],
 }: PageMeta): MetaDescriptor[] => {
   const imageName = getImageName(image?.exif ?? null);
   const pageTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
@@ -45,6 +48,7 @@ const pageMeta = ({
     },
     ...(image ? [{ property: 'og:image', content: image.thumbnailUrl }] : []),
     ...(imageName ? [{ property: 'og:image:alt', content: imageName }] : []),
+    ...structuredData.map((item) => ({ 'script:ld+json': item })),
   ];
 };
 

@@ -24,6 +24,8 @@ export interface Image {
   url: string;
   thumbnailUrl: string;
   id: string;
+  /** When the image file last changed, in UTC */
+  modifiedAt: string | null;
   exif: Exif | null;
 }
 
@@ -39,6 +41,8 @@ export interface ManifestImage {
   key: string;
   /** Key of its thumbnail, when one has been uploaded */
   thumbnailKey: string | null;
+  /** Missing from manifests written before this was added */
+  modifiedAt?: string | null;
   exif: Exif | null;
 }
 

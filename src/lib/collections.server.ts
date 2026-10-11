@@ -5,13 +5,20 @@ const CDN_BASE_URL = import.meta.env.VITE_CDN_BASE_URL;
 
 let cachedCollections: Promise<Collection[]> | null = null;
 
-const createImage = ({ id, key, thumbnailKey, exif }: ManifestImage): Image => {
+const createImage = ({
+  id,
+  key,
+  thumbnailKey,
+  modifiedAt,
+  exif,
+}: ManifestImage): Image => {
   const url = `${CDN_BASE_URL}/${key}`;
 
   return {
     id,
     url,
     thumbnailUrl: thumbnailKey ? `${CDN_BASE_URL}/${thumbnailKey}` : url,
+    modifiedAt: modifiedAt ?? null,
     exif,
   };
 };

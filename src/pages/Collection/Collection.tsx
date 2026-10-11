@@ -8,6 +8,7 @@ import {
   getCollections,
 } from '../../lib/collections.server';
 import pageMeta from '../../lib/pageMeta';
+import { getSiteStructuredData } from '../../lib/structuredData';
 import type { Route } from './+types/Collection';
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
@@ -30,6 +31,7 @@ export const meta = ({ loaderData, params, location }: Route.MetaArgs) => {
   return pageMeta({
     pathname: loaderData?.canonicalPath ?? location.pathname,
     image: collection?.images[0],
+    structuredData: params.id ? [] : getSiteStructuredData(),
     ...(params.id && collection
       ? {
           title: collection.title,
