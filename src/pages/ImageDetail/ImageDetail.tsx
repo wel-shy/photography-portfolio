@@ -58,6 +58,7 @@ export const meta = ({ loaderData, location }: Route.MetaArgs) => {
 
   return pageMeta({
     pathname: location.pathname,
+    image: loaderData?.image,
     title: title ?? 'Photo',
     description: title
       ? `${title}, photographed by Daniel Welsh.`

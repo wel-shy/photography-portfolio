@@ -22,6 +22,7 @@ export const meta = ({ loaderData, params, location }: Route.MetaArgs) => {
   // The home page shows the first collection but keeps the site's default title
   return pageMeta({
     pathname: location.pathname,
+    image: collection?.images[0],
     ...(params.id && collection
       ? {
           title: collection.title,

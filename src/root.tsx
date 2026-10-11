@@ -56,7 +56,6 @@ export const Layout = ({ children }: { children: ReactNode }) => {
         <link rel="manifest" href="/manifest.json" />
         <meta property="og:site_name" content="Daniel Welsh Photography" />
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary" />
         <Meta />
         <Links />
       </head>
