@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router';
+import { getImageName } from '../lib/describeImage';
 import { Image } from '../lib/types';
 
 interface GalleryProps {
@@ -48,7 +49,7 @@ const Gallery = ({ images }: GalleryProps) => (
           <GridItem
             key={thumbnailUrl}
             className="grid-item"
-            alt={exif?.title ?? ''}
+            alt={getImageName(exif) ?? ''}
             src={thumbnailUrl}
             // Only the images at the top of the page are worth loading up front
             loading={index < EAGER_IMAGES ? 'eager' : 'lazy'}

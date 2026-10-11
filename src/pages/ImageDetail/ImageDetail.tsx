@@ -4,6 +4,7 @@ import { data } from 'react-router';
 import ExifDetails from './ExifDetails';
 import BasePage from '../../components/BasePage/BasePage';
 import { getImage } from '../../lib/collections.server';
+import { getImageDescription, getImageName } from '../../lib/describeImage';
 import pageMeta from '../../lib/pageMeta';
 import type { Route } from './+types/ImageDetail';
 
@@ -54,27 +55,24 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 };
 
 export const meta = ({ loaderData, location }: Route.MetaArgs) => {
-  const title = loaderData?.image.exif?.title || null;
+  const exif = loaderData?.image.exif ?? null;
 
   return pageMeta({
     pathname: location.pathname,
     image: loaderData?.image,
-    title: title ?? 'Photo',
-    description: title
-      ? `${title}, photographed by Daniel Welsh.`
-      : 'A photograph by Daniel Welsh.',
+    title: getImageName(exif) ?? 'Photo',
+    description: getImageDescription(exif),
   });
 };
 
 const ImageDetail = ({ loaderData }: Route.ComponentProps) => {
   const { url, exif } = loaderData.image;
-  const title = exif?.title || null;
 
   return (
     <BasePage>
       <ImageDetailsWrapper>
         <ImageContainer>
-          <StyledImage src={url} alt={title ?? ''} />
+          <StyledImage src={url} alt={getImageName(exif) ?? ''} />
         </ImageContainer>
 
         <DetailsContainer>

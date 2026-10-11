@@ -1,3 +1,11 @@
+/** The location fields of the image's metadata, as entered in Lightroom */
+export interface Location {
+  sublocation: string | null;
+  city: string | null;
+  state: string | null;
+  country: string | null;
+}
+
 export interface Exif {
   createdAt: string | null;
   /** In seconds */
@@ -8,6 +16,8 @@ export interface Exif {
   make: string | null;
   model: string | null;
   title: string | null;
+  caption: string | null;
+  location: Location | null;
 }
 
 export interface Image {

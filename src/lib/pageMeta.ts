@@ -1,4 +1,5 @@
 import { MetaDescriptor } from 'react-router';
+import { getImageName } from './describeImage';
 import { Image } from './types';
 
 const SITE_NAME = 'Daniel Welsh Photography';
@@ -26,6 +27,7 @@ const pageMeta = ({
   description,
   image,
 }: PageMeta): MetaDescriptor[] => {
+  const imageName = getImageName(image?.exif ?? null);
   const pageTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
   const pageDescription = description || DEFAULT_DESCRIPTION;
   const url = getPageUrl(pathname);
@@ -42,9 +44,7 @@ const pageMeta = ({
       content: image ? 'summary_large_image' : 'summary',
     },
     ...(image ? [{ property: 'og:image', content: image.thumbnailUrl }] : []),
-    ...(image?.exif?.title
-      ? [{ property: 'og:image:alt', content: image.exif.title }]
-      : []),
+    ...(imageName ? [{ property: 'og:image:alt', content: imageName }] : []),
   ];
 };
 
