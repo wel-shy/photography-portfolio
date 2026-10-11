@@ -62,14 +62,6 @@ const PrivacyPage = () => {
           number of requests per country.
         </p>
 
-        <h3>Browser storage</h3>
-        <p>
-          To make pages load faster, the site saves the camera details of the
-          photos you have viewed in your browser&apos;s local storage. This
-          stays on your device, is not sent anywhere, and can be removed by
-          clearing the site data in your browser.
-        </p>
-
         <h3>Email and external links</h3>
         <p>
           If you email me, I use your address and message only to reply. The

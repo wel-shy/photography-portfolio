@@ -3,6 +3,14 @@ import { hydrateRoot } from 'react-dom/client';
 import { HydratedRouter } from 'react-router/dom';
 import reportWebVitals from './reportWebVitals';
 
+// Earlier versions of the site cached EXIF details here. Safe to delete once
+// returning visitors have had time to come back (added October 2026).
+try {
+  localStorage.removeItem('image-exif');
+} catch {
+  // Storage can be unavailable, e.g. when blocked by the browser
+}
+
 startTransition(() => {
   hydrateRoot(
     document,
