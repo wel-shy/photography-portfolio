@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useNavigate } from 'react-router';
+import { Link } from 'react-router';
 import styled from 'styled-components';
 
 const H1 = styled.h1`
@@ -12,17 +12,18 @@ const H1 = styled.h1`
     font-size: 1.75em;
   }
 
-  &:hover {
-    cursor: pointer;
+  a,
+  a:hover {
+    color: inherit;
   }
 `;
 
 const Brand = () => {
-  const navigate = useNavigate();
-
   return (
     <div>
-      <H1 onClick={() => navigate('/')}>Daniel Welsh</H1>
+      <H1>
+        <Link to="/">Daniel Welsh</Link>
+      </H1>
     </div>
   );
 };

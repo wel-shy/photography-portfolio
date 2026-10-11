@@ -1,4 +1,4 @@
-import { getCollections } from '../lib/collections.server';
+import { getCollectionPath, getCollections } from '../lib/collections.server';
 import { getPageUrl } from '../lib/pageMeta';
 import { Image } from '../lib/types';
 
@@ -32,9 +32,9 @@ export const loader = async () => {
   const sitemap = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
-    getUrlEntry('/'),
+    // The first collection is listed as the home page
     ...collections.map(({ id, images }) =>
-      getUrlEntry(`/collections/${id}`, images)
+      getUrlEntry(getCollectionPath(collections, id), images)
     ),
     ...collections.flatMap(({ images }) =>
       images.map((image) => getUrlEntry(`/images/${image.id}`, [image]))

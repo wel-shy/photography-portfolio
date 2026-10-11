@@ -59,10 +59,35 @@ export const getCollection = async (id: string | undefined) => {
     : collections[0];
 };
 
+/**
+ * The page a collection is linked to and indexed at. The first collection is the
+ * home page, so that is used rather than its own /collections page.
+ */
+export const getCollectionPath = (collections: Collection[], id: string) =>
+  collections[0]?.id === id ? '/' : `/collections/${id}`;
+
+/**
+ * An image along with its collection and the images shown either side of it there
+ */
 export const getImage = async (imageId: string | undefined) => {
   const collections = await getCollections();
+  const collection = collections.find(({ images }) =>
+    images.some(({ id }) => id === imageId)
+  );
 
-  return collections
-    .flatMap(({ images }) => images)
-    .find(({ id }) => id === imageId);
+  if (!collection) {
+    return null;
+  }
+
+  const index = collection.images.findIndex(({ id }) => id === imageId);
+
+  return {
+    image: collection.images[index],
+    collection: {
+      title: collection.title,
+      link: getCollectionPath(collections, collection.id),
+    },
+    previous: collection.images[index - 1] ?? null,
+    next: collection.images[index + 1] ?? null,
+  };
 };

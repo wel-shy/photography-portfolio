@@ -2,7 +2,11 @@ import React from 'react';
 import { data } from 'react-router';
 import BasePage from '../../components/BasePage/BasePage';
 import Gallery from '../../components/Gallery';
-import { getCollection } from '../../lib/collections.server';
+import {
+  getCollection,
+  getCollectionPath,
+  getCollections,
+} from '../../lib/collections.server';
 import pageMeta from '../../lib/pageMeta';
 import type { Route } from './+types/Collection';
 
@@ -13,7 +17,10 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
     throw data(null, { status: 404 });
   }
 
-  return { collection };
+  return {
+    collection,
+    canonicalPath: getCollectionPath(await getCollections(), collection.id),
+  };
 };
 
 export const meta = ({ loaderData, params, location }: Route.MetaArgs) => {
@@ -21,7 +28,7 @@ export const meta = ({ loaderData, params, location }: Route.MetaArgs) => {
 
   // The home page shows the first collection but keeps the site's default title
   return pageMeta({
-    pathname: location.pathname,
+    pathname: loaderData?.canonicalPath ?? location.pathname,
     image: collection?.images[0],
     ...(params.id && collection
       ? {

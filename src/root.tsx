@@ -15,7 +15,7 @@ import GlobalStyle from './GlobalStyle';
 import BasePage from './components/BasePage/BasePage';
 import Footer from './components/Footer';
 import { PreferencesProvider } from './contexts/PreferencesContext/PreferencesContext';
-import { getCollections } from './lib/collections.server';
+import { getCollectionPath, getCollections } from './lib/collections.server';
 import pageMeta from './lib/pageMeta';
 import type { Route } from './+types/root';
 
@@ -36,7 +36,7 @@ export const loader = async () => {
     collectionLinks: collections.map(({ id, title }) => ({
       id,
       title,
-      link: `/collections/${id}`,
+      link: getCollectionPath(collections, id),
     })),
   };
 };

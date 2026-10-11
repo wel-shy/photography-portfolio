@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { data } from 'react-router';
+import { Link, data } from 'react-router';
+import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import ExifDetails from './ExifDetails';
 import BasePage from '../../components/BasePage/BasePage';
 import { getImage } from '../../lib/collections.server';
@@ -44,14 +45,53 @@ const DetailsContainer = styled.div`
   }
 `;
 
-export const loader = async ({ params }: Route.LoaderArgs) => {
-  const image = await getImage(params.imageId);
+const ImageNav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  margin-bottom: 1.5em;
 
-  if (!image) {
+  /* Keeps the collection centred when there is no previous or next image */
+  > * {
+    flex: 1;
+  }
+
+  .collection {
+    text-align: center;
+  }
+
+  .next {
+    text-align: right;
+  }
+
+  /* Centres the arrows on the text beside them */
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+`;
+
+export const loader = async ({ params }: Route.LoaderArgs) => {
+  const result = await getImage(params.imageId);
+
+  if (!result) {
     throw data(null, { status: 404 });
   }
 
-  return { image };
+  const { image, collection, previous, next } = result;
+  const getLink = (neighbour: typeof image | null) =>
+    neighbour && {
+      link: `/images/${neighbour.id}`,
+      name: getImageName(neighbour.exif),
+    };
+
+  return {
+    image,
+    collection,
+    previous: getLink(previous),
+    next: getLink(next),
+  };
 };
 
 export const meta = ({ loaderData, location }: Route.MetaArgs) => {
@@ -66,10 +106,37 @@ export const meta = ({ loaderData, location }: Route.MetaArgs) => {
 };
 
 const ImageDetail = ({ loaderData }: Route.ComponentProps) => {
-  const { url, exif } = loaderData.image;
+  const { image, collection, previous, next } = loaderData;
+  const { url, exif } = image;
 
   return (
     <BasePage>
+      <ImageNav aria-label="More photos">
+        <div>
+          {previous && (
+            <Link
+              to={previous.link}
+              rel="prev"
+              title={previous.name ?? undefined}
+            >
+              <ArrowLeftOutlined aria-hidden />
+              Previous
+            </Link>
+          )}
+        </div>
+        <div className="collection">
+          <Link to={collection.link}>{collection.title}</Link>
+        </div>
+        <div className="next">
+          {next && (
+            <Link to={next.link} rel="next" title={next.name ?? undefined}>
+              Next
+              <ArrowRightOutlined aria-hidden />
+            </Link>
+          )}
+        </div>
+      </ImageNav>
+
       <ImageDetailsWrapper>
         <ImageContainer>
           <StyledImage src={url} alt={getImageName(exif) ?? ''} />

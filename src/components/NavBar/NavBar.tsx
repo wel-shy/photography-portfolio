@@ -14,6 +14,7 @@ const NavBar = () => {
     collectionLinks: [],
   };
   const { pathname } = useLocation();
+  const currentPath = pathname.replace(/\/+$/, '') || '/';
   const { theme, toggleTheme } = usePreferencesContext();
 
   return (
@@ -24,8 +25,7 @@ const NavBar = () => {
             <LinkItem
               to={link}
               active={
-                pathname.includes(link) ||
-                (pathname === '/' && id === 'Cityscapes')
+                currentPath === link || currentPath === `/collections/${id}`
               }
               key={id}
             >
